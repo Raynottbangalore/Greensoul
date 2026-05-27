@@ -8,8 +8,8 @@
   --color-brand-brown: #5C4033;
   --color-brand-grey: #787A75;
   
-  --font-heading: "Cormorant Garamond", serif;
-  --font-body: "Jost", sans-serif;
+  --font-heading: "Didot", "Bodoni MT", "Times New Roman", serif;
+  --font-body: "Jost", "Helvetica Neue", sans-serif;
 }
 
 @layer base {
