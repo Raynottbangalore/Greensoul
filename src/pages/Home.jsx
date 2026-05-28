@@ -7,12 +7,13 @@ export default function Home() {
     <>
       <section className="relative min-h-[100vh] w-full flex items-center bg-[#e8e6e1] overflow-hidden">
       
-      {/* Background Image */}
+      {/* Background Image - Scaled slightly taller to crop out baked-in scroll text at the bottom */}
       <div className="absolute inset-0 z-0">
         <img
           src="/images/hero_mockup.jpg"
           alt="Rainforest valley"
-          className="w-full h-full object-cover object-center"
+          className="w-full object-cover object-[center_top]"
+          style={{ height: '115%' }}
         />
       </div>
 
@@ -56,10 +57,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Cinematic Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-[#f3e9dc] cursor-pointer z-50 opacity-0 pointer-events-auto">
-        <span className="text-[9px] tracking-[0.2em] uppercase font-medium mb-3 opacity-70">Scroll to explore</span>
-        <ChevronDown size={18} strokeWidth={1.5} className="opacity-70" />
+      {/* Cinematic Scroll Indicator - HTML rendered for crispness */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white cursor-pointer z-[60] animate-bounce-slow">
+        <span className="text-[10px] tracking-[0.3em] uppercase font-medium mb-3 opacity-90 drop-shadow-md">Scroll to explore</span>
+        <ChevronDown size={20} strokeWidth={1.5} className="opacity-90 drop-shadow-md" />
       </div>
     </section>
       <Stay />
