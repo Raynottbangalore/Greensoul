@@ -32,11 +32,11 @@ export default function Navbar() {
     { name: 'Stay', path: '/stay' },
     { name: 'Dining', path: '/dining' },
     { name: 'Experiences', path: '/experiences' },
-    { name: 'Our Story', path: '/our-story' },
-    { name: 'Contact', path: '/contact' }
+    { name: 'Gallery', path: '/gallery' },
+    { name: 'Our Story', path: '/our-story' }
   ];
 
-  const isDarkNav = !['/', '/stay', '/our-story', '/experiences', '/contact', '/login'].includes(location.pathname);
+  const isDarkNav = !['/stay', '/login', '/gallery', '/book'].includes(location.pathname);
 
   let rightSideTextColor = "text-[#2c312a]";
   if (isDarkNav && !scrolled) {
@@ -82,14 +82,14 @@ export default function Navbar() {
           <span className="font-sans text-[10px] tracking-[0.45em] mt-3 opacity-70 font-medium ml-2">ECOSTAY</span>
         </Link>
 
-        <div className="hidden lg:flex items-center space-x-14 mt-4 ml-8">
+        <div className="hidden lg:flex items-center space-x-10 mt-4 ml-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.path}
               className={cn(
-                "text-[11px] tracking-[0.15em] uppercase font-medium hover:opacity-60 transition-opacity",
-                location.pathname === '/book' && !scrolled && (link.name === 'Our Story' || link.name === 'Contact') ? "lg:text-[#2c312a]" : ""
+                "text-[10px] tracking-[0.15em] uppercase font-medium hover:opacity-60 transition-opacity",
+                location.pathname === '/book' && !scrolled && (link.name === 'Our Story' || link.name === 'Contact' || link.name === 'Gallery') ? "lg:text-[#2c312a]" : ""
               )}
             >
               {link.name}
@@ -97,7 +97,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className={cn("flex items-center space-x-8 mt-2", rightSideTextColor)}>
+        <div className={cn("flex items-center space-x-6 mt-2", rightSideTextColor)}>
           {user ? (
             <button 
               onClick={() => {
@@ -165,10 +165,33 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
+              
+              {/* Mobile Authentication Links */}
+              {user ? (
+                <button 
+                  onClick={() => {
+                    signOut(auth);
+                    toast.success('Successfully signed out!');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="font-heading text-4xl hover:opacity-60 transition-opacity"
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <Link 
+                  to="/login"
+                  className="font-heading text-4xl hover:opacity-60 transition-opacity"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Sign In
+                </Link>
+              )}
+
               <Link 
                 to="/book"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-8 border border-[#2c312a]/30 px-8 py-3 text-[11px] tracking-[0.2em] uppercase font-medium hover:bg-[#2c312a] hover:text-white transition-colors"
+                className="mt-8 border border-[#2c312a]/30 px-8 py-3 text-[11px] tracking-[0.2em] uppercase font-medium hover:bg-[#2c312a] hover:text-[#E9E8E1] transition-colors"
               >
                 Book Your Escape
               </Link>

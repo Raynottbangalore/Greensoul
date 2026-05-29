@@ -1,17 +1,37 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Mountain, Leaf, Coffee } from 'lucide-react';
 
 export default function Stay() {
   return (
     <div id="stay" className="w-full bg-[#E9E8E1]">
       {/* Section Title Gap */}
-      <div className="w-full pt-48 pb-16 md:pt-60 md:pb-24 flex flex-col items-center justify-center text-center px-6 relative z-10">
-        <p className="text-[10px] md:text-[12px] tracking-[0.35em] font-medium uppercase mb-6 text-[#5a5a52] opacity-80">
+      <div className="w-full pt-48 pb-20 md:pt-60 md:pb-32 flex flex-col items-center justify-center text-center px-6 relative z-10">
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.8 }}
+          className="text-[10px] md:text-[12px] tracking-[0.35em] font-medium uppercase mb-6 text-[#5a5a52] opacity-80"
+        >
           The Sanctuaries
-        </p>
-        <h2 className="font-heading text-[3.5rem] md:text-[5rem] lg:text-[6rem] text-[#2c312a] font-normal leading-[1.1] tracking-[-0.02em]">
+        </motion.p>
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="font-heading text-[3.5rem] md:text-[5rem] lg:text-[6rem] text-[#2c312a] font-normal leading-[1.1] tracking-[-0.02em]"
+        >
           Stay Experiences
-        </h2>
+        </motion.h2>
+        <motion.div 
+          initial={{ height: 0 }}
+          whileInView={{ height: 100 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1.2, delay: 0.4 }}
+          className="w-[1px] bg-[#2c312a]/20 mt-16"
+        ></motion.div>
       </div>
 
       {/* Mist Valley Cottages Hero Section */}
@@ -30,10 +50,19 @@ export default function Stay() {
 
         {/* Content */}
         <div className="relative z-10 px-8 md:px-16 lg:px-[120px] w-full mx-auto flex flex-col justify-center min-h-[100vh] pt-[15vh] pb-24">
-          <div className="max-w-[34rem] text-[#2c312a]">
-            <p className="text-[11px] tracking-[0.2em] font-medium uppercase mb-8 text-[#5a5a52]">
-              Mist Valley Cottages
-            </p>
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="max-w-[34rem] text-[#2c312a]"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-8 h-[1px] bg-[#5a5a52]/40"></div>
+              <p className="text-[11px] tracking-[0.2em] font-medium uppercase text-[#5a5a52]">
+                Mist Valley Cottages
+              </p>
+            </div>
 
             <h2 className="font-heading text-[3.2rem] md:text-[4.2rem] leading-[1.1] mb-8 font-normal text-[#2c312a]">
               Earth-built dwellings<br className="hidden md:block" /> overlooking the shifting<br className="hidden md:block" /> clouds of Murkan Gudda.
@@ -43,11 +72,13 @@ export default function Stay() {
               Built using handmade adobe blocks and dry-stacked granite stone, the Mist Valley Cottages sit quietly along the rainforest edge — where monsoon clouds drift through open windows, warm light settles against earthen walls, and the silence of the Western Ghats becomes part of everyday living.
             </p>
 
-            <button className="border border-[#2c312a]/30 px-7 py-3.5 text-[10px] tracking-[0.15em] font-medium uppercase hover:bg-[#2c312a] hover:text-[#E9E8E1] transition-colors flex items-center gap-4 w-fit">
-              DISCOVER THE VALLEY COTTAGES
-              <ArrowRight size={14} strokeWidth={1} />
+            <button className="group border border-[#2c312a]/30 px-7 py-3.5 text-[10px] tracking-[0.15em] font-medium uppercase hover:bg-[#2c312a] hover:text-[#E9E8E1] transition-all duration-500 flex items-center gap-4 w-fit relative overflow-hidden">
+              <span className="relative z-10 flex items-center gap-4">
+                DISCOVER THE VALLEY COTTAGES
+                <ArrowRight size={14} strokeWidth={1} className="group-hover:translate-x-1 transition-transform" />
+              </span>
             </button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -90,11 +121,17 @@ export default function Stay() {
             </svg>
           </div>
 
-          <div className="max-w-[420px] mx-auto lg:ml-[12%] relative z-10 flex flex-col">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.8 }}
+            className="max-w-[420px] mx-auto lg:ml-[12%] relative z-10 flex flex-col"
+          >
 
             {/* Item 1 */}
-            <div className="flex items-start gap-7">
-              <div className="text-[#4a4a40] mt-1 shrink-0 w-8 flex justify-center">
+            <div className="flex items-start gap-7 group">
+              <div className="text-[#4a4a40] mt-1 shrink-0 w-8 flex justify-center group-hover:-translate-y-1 transition-transform duration-500">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="7" cy="5" r="1.5" />
                   <path d="M1 15 L 7 8 L 13 15" />
@@ -112,8 +149,8 @@ export default function Stay() {
             </div>
 
             {/* Item 2 */}
-            <div className="flex items-start gap-7">
-              <div className="text-[#4a4a40] mt-1 shrink-0 w-8 flex justify-center">
+            <div className="flex items-start gap-7 group">
+              <div className="text-[#4a4a40] mt-1 shrink-0 w-8 flex justify-center group-hover:-translate-y-1 transition-transform duration-500">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2 Q 19 9 19 15 A 7 7 0 0 1 5 15 Q 5 9 12 2 Z" />
                   <path d="M12 22 L 12 7" />
@@ -132,8 +169,8 @@ export default function Stay() {
             </div>
 
             {/* Item 3 */}
-            <div className="flex items-start gap-7">
-              <div className="text-[#4a4a40] mt-1 shrink-0 w-8 flex justify-center">
+            <div className="flex items-start gap-7 group">
+              <div className="text-[#4a4a40] mt-1 shrink-0 w-8 flex justify-center group-hover:-translate-y-1 transition-transform duration-500">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M4 10 L 4 13 C 4 17, 16 17, 16 13 L 16 10 Z" />
                   <path d="M16 11 C 19 11, 19 14, 16 14" />
@@ -151,17 +188,36 @@ export default function Stay() {
               </div>
             </div>
 
-          </div>
+          </motion.div>
         </div>
       </section>
       {/* Section Title Gap */}
-      <div className="w-full pt-32 pb-16 md:pt-48 md:pb-24 flex flex-col items-center justify-center text-center px-6 relative z-10 bg-[#E9E8E1]">
-        <p className="text-[10px] md:text-[12px] tracking-[0.35em] font-medium uppercase mb-6 text-[#5a5a52] opacity-80">
+      <div className="w-full pt-32 pb-20 md:pt-48 md:pb-32 flex flex-col items-center justify-center text-center px-6 relative z-10 bg-[#E9E8E1]">
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.8 }}
+          className="text-[10px] md:text-[12px] tracking-[0.35em] font-medium uppercase mb-6 text-[#5a5a52] opacity-80"
+        >
           The Sanctuaries
-        </p>
-        <h2 className="font-heading text-[3.5rem] md:text-[5rem] lg:text-[6rem] text-[#2c312a] font-normal leading-[1.1] tracking-[-0.02em]">
+        </motion.p>
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="font-heading text-[3.5rem] md:text-[5rem] lg:text-[6rem] text-[#2c312a] font-normal leading-[1.1] tracking-[-0.02em]"
+        >
           Earth Heritage
-        </h2>
+        </motion.h2>
+        <motion.div 
+          initial={{ height: 0 }}
+          whileInView={{ height: 100 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1.2, delay: 0.4 }}
+          className="w-[1px] bg-[#2c312a]/20 mt-16"
+        ></motion.div>
       </div>
 
       {/* Earth Heritage Suites Hero Section */}
@@ -180,10 +236,19 @@ export default function Stay() {
 
         {/* Content */}
         <div className="relative z-10 px-8 md:px-16 lg:px-[120px] w-full mx-auto flex flex-col justify-center min-h-[100vh] pt-[15vh] pb-16">
-          <div className="max-w-[34rem] text-[#2c312a]">
-            <p className="text-[10px] md:text-[11px] tracking-[0.2em] font-medium uppercase mb-6 md:mb-8 text-[#5a5a52]">
-              Earth Heritage Suites
-            </p>
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="max-w-[34rem] text-[#2c312a]"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-8 h-[1px] bg-[#5a5a52]/40"></div>
+              <p className="text-[10px] md:text-[11px] tracking-[0.2em] font-medium uppercase text-[#5a5a52]">
+                Earth Heritage Suites
+              </p>
+            </div>
 
             <h2 className="font-heading text-[3.2rem] md:text-[4rem] lg:text-[4.8rem] leading-[1.05] mb-8 font-normal text-[#2c312a]">
               Rooted in earth.<br />Designed for<br />togetherness.
@@ -195,31 +260,29 @@ export default function Stay() {
               Built using handmade adobe walls, mud-plastered interiors, and wide shaded verandahs, the Earth Heritage Suites invite slow mornings, shared conversations, and quiet living beside the rainforest.
             </p>
 
-            <button className="text-[10px] md:text-[11px] tracking-[0.15em] font-medium uppercase hover:text-[#5a5a52] transition-colors flex items-center gap-4 pb-2 border-b border-[#2c312a]/30 w-fit">
+            <button className="group text-[10px] md:text-[11px] tracking-[0.15em] font-medium uppercase hover:text-[#5a5a52] transition-colors flex items-center gap-4 pb-2 border-b border-[#2c312a]/30 w-fit">
               EXPLORE THE HERITAGE SUITES
-              <ArrowRight size={14} strokeWidth={1} />
+              <ArrowRight size={14} strokeWidth={1} className="group-hover:translate-x-1 transition-transform" />
             </button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Earth Heritage Suites Details Section */}
-      <section className="relative w-full min-h-[35vh] md:min-h-[45vh] lg:min-h-[50vh] flex items-center overflow-hidden bg-[#E9E8E1]">
-        {/* Background Image - Left aligned */}
-        <div className="absolute inset-0 left-0 w-full md:w-[50%] lg:w-[42%] z-0">
+      <section className="w-full flex flex-col md:flex-row items-stretch min-h-[40vh] md:min-h-[45vh] lg:min-h-[50vh] bg-[#E9E8E1]">
+        {/* Left Image */}
+        <div className="w-full md:w-[50%] lg:w-[42%] h-[50vh] md:h-auto relative">
           <img
             src="/images/EarthHeritageiamge2.png"
             alt="Earth Heritage Details"
-            className="w-full h-full object-cover object-[center_center] md:object-[60%_center]"
+            className="absolute inset-0 w-full h-full object-cover object-[center_center] md:object-[60%_center]"
           />
         </div>
 
-        {/* Gradient Overlay removed as per design requirements to eliminate shade */}
-
         {/* Content - Right aligned */}
-        <div className="relative z-10 w-full flex justify-end px-8 md:px-16 lg:pr-[120px] xl:pr-[160px] py-12 md:py-20">
-          <div className="w-full md:w-[45%] lg:w-[35%] flex items-center pl-6 md:pl-10 border-l border-[#2c312a]/30">
-            <p className="font-heading text-[1.05rem] md:text-[1.15rem] leading-[1.8] text-[#4a4a40] opacity-90 max-w-[20rem]">
+        <div className="w-full md:w-[50%] lg:flex-1 flex justify-center md:justify-end items-center px-8 py-16 md:py-20 md:px-16 lg:pr-[120px] xl:pr-[160px]">
+          <div className="w-full md:max-w-[20rem] flex items-center pl-6 md:pl-10 border-l border-[#2c312a]/30">
+            <p className="font-heading text-[1.1rem] md:text-[1.15rem] leading-[1.8] text-[#4a4a40] opacity-90">
               Every detail carries the texture<br className="hidden md:block" /> of tradition and the warmth<br className="hidden md:block" /> of human hands.
             </p>
           </div>
@@ -227,13 +290,32 @@ export default function Stay() {
       </section>
 
       {/* Section Title Gap */}
-      <div className="w-full pt-32 pb-16 md:pt-48 md:pb-24 flex flex-col items-center justify-center text-center px-6 relative z-10 bg-[#E9E8E1]">
-        <p className="text-[10px] md:text-[12px] tracking-[0.35em] font-medium uppercase mb-6 text-[#5a5a52] opacity-80">
+      <div className="w-full pt-32 pb-20 md:pt-48 md:pb-32 flex flex-col items-center justify-center text-center px-6 relative z-10 bg-[#E9E8E1]">
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.8 }}
+          className="text-[10px] md:text-[12px] tracking-[0.35em] font-medium uppercase mb-6 text-[#5a5a52] opacity-80"
+        >
           The Sanctuaries
-        </p>
-        <h2 className="font-heading text-[3.5rem] md:text-[5rem] lg:text-[6rem] text-[#2c312a] font-normal leading-[1.1] tracking-[-0.02em]">
+        </motion.p>
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="font-heading text-[3.5rem] md:text-[5rem] lg:text-[6rem] text-[#2c312a] font-normal leading-[1.1] tracking-[-0.02em]"
+        >
           Heritage Spaces
-        </h2>
+        </motion.h2>
+        <motion.div 
+          initial={{ height: 0 }}
+          whileInView={{ height: 100 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1.2, delay: 0.4 }}
+          className="w-[1px] bg-[#2c312a]/20 mt-16"
+        ></motion.div>
       </div>
 
       {/* The Malnad House Section */}
@@ -257,10 +339,19 @@ export default function Stay() {
 
         {/* Content */}
         <div className="relative z-10 px-8 md:px-16 lg:px-[120px] w-full mx-auto flex flex-col justify-center min-h-[100vh] pt-[15vh] pb-16">
-          <div className="max-w-[34rem] text-[#2c312a]">
-            <p className="text-[10px] md:text-[11px] tracking-[0.2em] font-medium uppercase mb-6 md:mb-8 text-[#5a5a52]">
-              The Malnad House
-            </p>
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="max-w-[34rem] text-[#2c312a]"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-8 h-[1px] bg-[#5a5a52]/40"></div>
+              <p className="text-[10px] md:text-[11px] tracking-[0.2em] font-medium uppercase text-[#5a5a52]">
+                The Malnad House
+              </p>
+            </div>
 
             <h2 className="font-heading text-[3.2rem] md:text-[4rem] lg:text-[4.5rem] leading-[1.1] mb-8 font-normal text-[#2c312a]">
               Gather beneath<br />rain, forest, and<br />slow evenings.
@@ -272,11 +363,11 @@ export default function Stay() {
               Tucked quietly beside the rainforest, the Malnad House was designed for shared living — where long verandahs, earthen walls, drifting mist, and open landscapes invite families, friends, and communities to slow down together.
             </p>
 
-            <button className="border border-[#2c312a]/30 px-6 py-3.5 text-[10px] tracking-[0.15em] font-medium uppercase hover:bg-[#2c312a] hover:text-[#E9E8E1] transition-colors flex items-center gap-4 w-fit">
+            <button className="group border border-[#2c312a]/30 px-6 py-3.5 text-[10px] tracking-[0.15em] font-medium uppercase hover:bg-[#2c312a] hover:text-[#E9E8E1] transition-colors flex items-center gap-4 w-fit">
               DISCOVER THE MALNAD HOUSE
-              <ArrowRight size={14} strokeWidth={1} />
+              <ArrowRight size={14} strokeWidth={1} className="group-hover:translate-x-1 transition-transform" />
             </button>
-          </div>
+          </motion.div>
         </div>
       </section>
 

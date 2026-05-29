@@ -1,39 +1,127 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 export default function Dining() {
   return (
-    <section className="bg-brand-green text-brand-white min-h-screen pt-24">
-      {/* Dining Section */}
-      <div id="dining" className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="bg-[#1A2E20] p-16 md:p-24 lg:p-32 flex flex-col justify-center">
-          <p className="text-brand-gold tracking-[0.2em] text-sm uppercase mb-6">Culinary Experience</p>
-          <h2 className="font-heading text-4xl md:text-5xl mb-8 leading-tight">Curated Dining Rooted In The Land</h2>
-          <p className="text-brand-white/70 font-light leading-relaxed mb-12 text-lg">
-            The central dining pavilion, built using rammed earth architecture and filled with carefully curated royal antiques, opens into a lush landscaped garden with a gentle cascading waterfall. The open walk-in kitchen combines professional culinary functionality with authentic regional warmth.
-          </p>
-          <button className="self-start border border-brand-gold text-brand-gold px-8 py-4 text-sm tracking-widest uppercase hover:bg-brand-gold hover:text-brand-green transition-colors duration-500">
-            Discover Our Menu
-          </button>
+    <div className="w-full bg-[#1A1A18] min-h-screen text-[#E9E8E1]">
+      {/* Cinematic Hero Section */}
+      <section className="relative w-full h-screen overflow-hidden">
+        <motion.img 
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+          src="/images/rainforest_dining_1780050032443.png" 
+          alt="Rainforest dining" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-[#1A1A18]/90"></div>
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 pt-32">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="flex flex-col items-center"
+          >
+            <p className="text-[10px] md:text-[12px] tracking-[0.4em] uppercase font-medium mb-6 opacity-80 text-[#D4C3A3]">
+              Culinary Sanctuary
+            </p>
+            <h1 className="font-heading text-5xl md:text-7xl lg:text-[7rem] font-normal leading-[1.05] tracking-[-0.02em] mb-8">
+              Dining in the wild.
+            </h1>
+            <p className="max-w-2xl text-[14px] md:text-[16px] leading-[1.8] opacity-80 font-light">
+              Where the untamed beauty of the rainforest meets the refined artistry of slow, seasonal cuisine.
+            </p>
+          </motion.div>
         </div>
-        <div className="h-[60vh] lg:h-auto bg-[#0d1b14] relative overflow-hidden">
-           {/* Placeholder for dining image - we can use one of the generated ones slightly darkened or colored */}
-           <div className="absolute inset-0 bg-brand-green/40 z-10" />
-           <img src="/images/dining_pavilion_1779811496432.png" alt="Dining pavilion" className="w-full h-full object-cover scale-105" />
-        </div>
-      </div>
+      </section>
 
-      {/* Architecture Section */}
-      <div id="architecture" className="py-32 px-6 md:px-16 lg:px-24 text-center max-w-5xl mx-auto">
-        <p className="text-brand-gold tracking-[0.2em] text-sm uppercase mb-6">Our Philosophy</p>
-        <h2 className="font-heading text-5xl md:text-6xl mb-16 leading-tight">Architecture & Sustainability</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-           {['Rammed earth construction', 'Handmade adobe blocks', 'Dry stacked granite walls', 'Upcycled antiques', 'Traditional roofing', 'Climate-sensitive design', 'Low ecological impact', 'Naturally cool interiors'].map((feature, idx) => (
-             <div key={idx} className="border border-brand-white/20 p-8 flex items-center justify-center hover:bg-brand-white/5 transition-colors duration-500">
-                <span className="font-heading text-lg">{feature}</span>
-             </div>
-           ))}
+      {/* Dining Philosophy Section */}
+      <section className="py-24 md:py-32 lg:py-40 px-8 md:px-16 lg:px-[120px] max-w-[1400px] mx-auto">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
+          <div className="w-full lg:w-1/2 flex flex-col items-start">
+            <div className="w-12 h-[1px] bg-[#D4C3A3]/50 mb-8"></div>
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-10 leading-[1.1]">
+              Rooted in the <br/><span className="text-[#D4C3A3] italic">landscape</span>.
+            </h2>
+            <p className="text-[15px] leading-[1.9] opacity-80 mb-8 max-w-xl">
+              Our culinary philosophy is simple: we follow the rhythm of the seasons. Every dish tells the story of the Malnad region, honoring ancient foraging traditions and local farming practices.
+            </p>
+            <p className="text-[15px] leading-[1.9] opacity-80 max-w-xl">
+              Here, dining is an unhurried ritual. We believe that true luxury is found in the purity of ingredients, the warmth of the hearth, and the profound silence of the forest that surrounds you.
+            </p>
+          </div>
+          <div className="w-full lg:w-1/2 h-[60vh] lg:h-[80vh] overflow-hidden relative">
+            <img 
+              src="/images/handcrafted_cuisine_1780050049252.png" 
+              alt="Handcrafted cuisine" 
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* The Pavilion Section */}
+      <section className="py-24 md:py-32 lg:py-40 bg-[#141412]">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-[120px] flex flex-col-reverse lg:flex-row gap-16 lg:gap-24 items-center">
+          <div className="w-full lg:w-[55%] h-[50vh] md:h-[60vh] lg:h-[70vh] relative overflow-hidden">
+            <img 
+              src="/images/dining_pavilion_1780049996525.png" 
+              alt="Dining pavilion" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="w-full lg:w-[45%] flex flex-col items-start">
+            <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#D4C3A3] mb-6">The Architecture</p>
+            <h2 className="font-heading text-4xl md:text-5xl mb-8 leading-[1.1]">The Earth Pavilion</h2>
+            <p className="text-[15px] leading-[1.9] opacity-80 mb-10">
+              Built entirely from rammed earth and reclaimed timber, our open-air dining pavilion is designed to blur the boundaries between indoors and out. Feel the cool forest breeze, listen to the distant waterfall, and dine under the soft glow of antique brass lamps.
+            </p>
+            <button className="border border-[#D4C3A3]/40 px-8 py-4 text-[10px] tracking-[0.2em] uppercase font-medium hover:bg-[#D4C3A3] hover:text-[#1A1A18] transition-colors duration-500 flex items-center gap-4">
+              Explore Architecture
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Signature Moments Section */}
+      <section className="py-24 md:py-32 lg:py-40 px-8 md:px-16 lg:px-[120px] max-w-[1400px] mx-auto">
+        <div className="text-center mb-20 md:mb-28 flex flex-col items-center">
+          <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#D4C3A3] mb-6">Experiences</p>
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl leading-[1.1]">Signature Dining</h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+          <div className="flex flex-col group cursor-pointer">
+            <div className="h-[45vh] lg:h-[60vh] overflow-hidden mb-8 relative">
+              <img 
+                src="/images/candlelit_dining_1780050017068.png" 
+                alt="Candlelit Dining" 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+            </div>
+            <h3 className="font-heading text-2xl md:text-3xl mb-4 group-hover:text-[#D4C3A3] transition-colors">Intimate Dinners</h3>
+            <p className="text-[14px] leading-[1.8] opacity-70">
+              Private candlelit dining curated specifically for you, set against the dramatic backdrop of the nocturnal rainforest. A sensory journey of taste and ambiance.
+            </p>
+          </div>
+          
+          <div className="flex flex-col group cursor-pointer md:mt-24">
+            <div className="h-[45vh] lg:h-[60vh] overflow-hidden mb-8 relative">
+              <img 
+                src="/images/tea_hills_1780050103470.png" 
+                alt="Plantation Tea" 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+            </div>
+            <h3 className="font-heading text-2xl md:text-3xl mb-4 group-hover:text-[#D4C3A3] transition-colors">Plantation High Tea</h3>
+            <p className="text-[14px] leading-[1.8] opacity-70">
+              Afternoons are for pausing. Enjoy artisanal estate teas and delicate pastries on the observation deck as the mist rolls into the valley.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
   );
 }

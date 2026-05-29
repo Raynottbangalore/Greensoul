@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { collection, query, getDocs, orderBy, limit } from 'firebase/firestore';
+import { collection, query, getDocs, orderBy, limit, getCountFromServer } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { CalendarDays, Map, Image as ImageIcon, Compass } from 'lucide-react';
 
 export default function Dashboard() {
   const { currentUser } = useAuth();
-  const [stats, setStats] = useState({ bookings: 0, zones: 3, gallery: 12, experiences: 4 });
+  const [stats, setStats] = useState({ bookings: 0, gallery: 12 });
   const [recentInquiries, setRecentInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -15,6 +15,12 @@ export default function Dashboard() {
     const fetchDashboardData = async () => {
       try {
         const bookingsRef = collection(db, 'bookings');
+        
+        // Get actual total count
+        const countSnapshot = await getCountFromServer(bookingsRef);
+        const totalBookings = countSnapshot.data().count;
+
+        // Get 5 most recent for the table
         const q = query(bookingsRef, orderBy('createdAt', 'desc'), limit(5));
         const snapshot = await getDocs(q);
         
@@ -23,12 +29,13 @@ export default function Dashboard() {
           inquiries.push({ id: doc.id, ...doc.data() });
         });
         
-        // Mocking total counts for demo, normally would aggregate
+        const galleryRef = collection(db, 'gallery');
+        const galleryCountSnapshot = await getCountFromServer(galleryRef);
+        const totalGallery = galleryCountSnapshot.data().count;
+        
         setStats({
-          bookings: snapshot.size > 0 ? snapshot.size * 3 : 0, 
-          zones: 3,
-          gallery: 24,
-          experiences: 5
+          bookings: totalBookings, 
+          gallery: totalGallery
         });
         
         setRecentInquiries(inquiries);
@@ -43,10 +50,7 @@ export default function Dashboard() {
   }, []);
 
   const statCards = [
-    { title: 'Total Bookings', value: stats.bookings, icon: <CalendarDays size={24} />, color: 'text-blue-400' },
-    { title: 'Stay Zones', value: stats.zones, icon: <Map size={24} />, color: 'text-green-400' },
-    { title: 'Gallery Uploads', value: stats.gallery, icon: <ImageIcon size={24} />, color: 'text-purple-400' },
-    { title: 'Experiences', value: stats.experiences, icon: <Compass size={24} />, color: 'text-amber-400' },
+    { title: 'Total Bookings', value: stats.bookings, icon: <CalendarDays size={24} />, color: 'text-blue-400' }
   ];
 
   if (loading) {
@@ -61,27 +65,27 @@ export default function Dashboard() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <p className="text-[#D4AF37] text-xs tracking-widest uppercase mb-2">Welcome Back</p>
-        <h1 className="font-heading text-4xl tracking-wide text-white">Admin Dashboard</h1>
+        <p className="text-[#D4C3A3] text-[10px] tracking-[0.3em] uppercase font-medium mb-4">Welcome Back</p>
+        <h1 className="font-heading text-4xl lg:text-5xl tracking-[-0.02em] text-[#E9E8E1]">Admin Dashboard</h1>
       </motion.div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {statCards.map((card, index) => (
           <motion.div 
             key={index}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-white/5 border border-white/10 p-6 rounded-xl backdrop-blur-sm"
+            className="bg-[#2A3326] border border-[#E9E8E1]/10 p-8 rounded-none shadow-sm"
           >
-            <div className="flex justify-between items-start mb-4">
-              <div className={`p-3 rounded-lg bg-white/5 ${card.color}`}>
+            <div className="flex justify-between items-start mb-6">
+              <div className={`p-3 rounded-none bg-[#E9E8E1]/10 text-[#D4C3A3]`}>
                 {card.icon}
               </div>
-              <span className="text-3xl font-heading">{card.value}</span>
+              <span className="text-4xl font-heading text-[#E9E8E1]">{card.value}</span>
             </div>
-            <p className="text-white/50 text-sm tracking-wide uppercase">{card.title}</p>
+            <p className="text-[#E9E8E1]/60 text-[10px] tracking-[0.2em] uppercase font-medium">{card.title}</p>
           </motion.div>
         ))}
       </div>
@@ -91,15 +95,15 @@ export default function Dashboard() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm overflow-hidden"
+        className="bg-[#2A3326] border border-[#E9E8E1]/10 rounded-none shadow-sm overflow-hidden"
       >
-        <div className="p-6 border-b border-white/10">
-          <h2 className="font-heading text-2xl tracking-wide">Recent Inquiries</h2>
+        <div className="p-8 border-b border-[#E9E8E1]/10">
+          <h2 className="font-heading text-2xl lg:text-3xl tracking-wide text-[#E9E8E1]">Recent Inquiries</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-white/5 text-xs tracking-widest uppercase text-white/50 border-b border-white/10">
+              <tr className="bg-[#E9E8E1]/5 text-[10px] tracking-[0.2em] uppercase font-medium text-[#E9E8E1]/60 border-b border-[#E9E8E1]/10">
                 <th className="p-6 font-medium">Guest Name</th>
                 <th className="p-6 font-medium">Stay Zone</th>
                 <th className="p-6 font-medium">Check In</th>
@@ -109,22 +113,22 @@ export default function Dashboard() {
             <tbody>
               {recentInquiries.length === 0 ? (
                 <tr>
-                  <td colSpan="4" className="p-6 text-center text-white/50">No recent inquiries found.</td>
+                  <td colSpan="4" className="p-8 text-center text-[#E9E8E1]/60">No recent inquiries found.</td>
                 </tr>
               ) : (
                 recentInquiries.map((inquiry) => (
-                  <tr key={inquiry.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                  <tr key={inquiry.id} className="border-b border-[#E9E8E1]/5 hover:bg-[#E9E8E1]/10 transition-colors">
                     <td className="p-6">
-                      <p className="font-medium">{inquiry.fullName}</p>
-                      <p className="text-xs text-white/50">{inquiry.email}</p>
+                      <p className="font-medium text-[#E9E8E1] text-[15px]">{inquiry.fullName}</p>
+                      <p className="text-[11px] text-[#E9E8E1]/60 mt-1">{inquiry.email}</p>
                     </td>
-                    <td className="p-6 text-sm">{inquiry.stayZone}</td>
-                    <td className="p-6 text-sm">{inquiry.checkIn}</td>
+                    <td className="p-6 text-[13px] text-[#E9E8E1]/70">{inquiry.stayZone}</td>
+                    <td className="p-6 text-[13px] text-[#E9E8E1]/70">{inquiry.checkIn}</td>
                     <td className="p-6">
-                      <span className={`px-3 py-1 rounded-full text-[10px] uppercase tracking-wider ${
-                        inquiry.status === 'pending' ? 'bg-amber-500/20 text-amber-300' : 
-                        inquiry.status === 'confirmed' ? 'bg-green-500/20 text-green-300' : 
-                        'bg-white/10 text-white/70'
+                      <span className={`px-4 py-1.5 rounded-none border text-[9px] uppercase tracking-widest ${
+                        inquiry.status === 'pending' ? 'bg-[#D4C3A3]/10 text-[#D4C3A3] border-[#D4C3A3]/30' : 
+                        inquiry.status === 'confirmed' ? 'bg-[#E9E8E1]/10 text-[#E9E8E1] border-[#E9E8E1]/30' : 
+                        'bg-gray-500/10 text-gray-400 border-gray-500/30'
                       }`}>
                         {inquiry.status || 'Pending'}
                       </span>

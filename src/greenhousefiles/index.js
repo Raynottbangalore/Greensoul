@@ -1,0 +1,15 @@
+export { default as cycleWonder } from "./Cycle-unblur-wonder-3.png";
+export { default as earthHeritage1 } from "./EarthHeritageiamge1.png";
+export { default as eveningWalk } from "./Evening Walk-unblur-wonder-3.png";
+export { default as page1 } from "./Page 1 -unblur.png";
+export { default as page2 } from "./Page 2-wonder-3.png";
+export { default as page3 } from "./Page 3 -unblur.png";
+export { default as page4b } from "./Page 4 b.jpeg";
+export { default as page4 } from "./Page 4)-unblur.png";
+export { default as page5b } from "./Page 5 b.jpeg";
+export { default as page5cWonder } from "./Page 5 c-unblur-wonder-3.png";
+export { default as page5d } from "./Page 5 d-unblur.png";
+export { default as page5e } from "./Page 5 e-unblur.png";
+export { default as trekWonder } from "./Treck-wonder-3.png";
+export { default as heritageSuite } from "./heritage_earth_suite_1779811380883.png";
+export { default as malnadSecond } from "./malnadsecondimage.png";

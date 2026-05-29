@@ -6,6 +6,7 @@ import { db, auth } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { trekWonder } from '../greenhousefiles';
 
 export default function Book() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -53,10 +54,10 @@ export default function Book() {
     <div className="w-full min-h-screen bg-[#E9E8E1] flex flex-col lg:flex-row overflow-hidden relative">
       
       {/* LEFT SIDE - Cinematic Image */}
-      <div className="w-full lg:w-1/2 h-[50vh] lg:h-screen relative">
+      <div className="w-full lg:w-1/2 h-[50vh] lg:h-auto relative">
         <div className="absolute inset-0 bg-black/20 z-10"></div>
         <img 
-          src="/images/booking_hero.jpg" 
+          src={trekWonder} 
           alt="Luxury Rainforest Retreat" 
           className="absolute inset-0 w-full h-full object-cover"
         />

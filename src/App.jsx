@@ -10,13 +10,16 @@ import Dining from './pages/Dining';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Book from './pages/Book';
+import Gallery from './pages/Gallery';
 import { Toaster } from 'react-hot-toast';
+import { ErrorBoundary } from './ErrorBoundary';
 
 import { AuthProvider } from './context/AuthContext';
 import AdminProtectedRoute from './routes/AdminProtectedRoute';
 import AdminLayout from './admin/AdminLayout';
 import Dashboard from './admin/Dashboard';
 import Bookings from './admin/Bookings';
+import AdminGallery from './admin/AdminGallery';
 import Placeholder from './admin/Placeholder';
 
 // Component to scroll to top on route change
@@ -52,26 +55,29 @@ function AppContent() {
       />
       {!isAdminRoute && <Navbar />}
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/our-story" element={<OurStory />} />
-          <Route path="/experiences" element={<Experiences />} />
-          <Route path="/stay" element={<Stay />} />
-          <Route path="/dining" element={<Dining />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/book" element={<Book />} />
-          
-          {/* Admin Routes */}
-          <Route path="/admin" element={<AdminProtectedRoute><AdminLayout /></AdminProtectedRoute>}>
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="bookings" element={<Bookings />} />
-            <Route path="stay-zones" element={<Placeholder title="Stay Zones" />} />
-            <Route path="gallery" element={<Placeholder title="Gallery Management" />} />
-            <Route path="experiences" element={<Placeholder title="Experiences Management" />} />
-            <Route path="settings" element={<Placeholder title="Settings" />} />
-          </Route>
-        </Routes>
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/our-story" element={<OurStory />} />
+            <Route path="/experiences" element={<Experiences />} />
+            <Route path="/stay" element={<Home />} />
+            <Route path="/dining" element={<Dining />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/book" element={<Book />} />
+            
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminProtectedRoute><AdminLayout /></AdminProtectedRoute>}>
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="bookings" element={<Bookings />} />
+              <Route path="stay-zones" element={<Placeholder title="Stay Zones" />} />
+              <Route path="gallery" element={<AdminGallery />} />
+              <Route path="experiences" element={<Placeholder title="Experiences Management" />} />
+              <Route path="settings" element={<Placeholder title="Settings" />} />
+            </Route>
+          </Routes>
+        </ErrorBoundary>
       </main>
       {!isAdminRoute && <Footer />}
     </div>
