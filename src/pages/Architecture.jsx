@@ -1,91 +1,162 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
 export default function Architecture() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const heroY = useTransform(scrollYProgress, [0, 0.2], [0, 150]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+
   return (
-    <div className="w-full bg-[#1A1A18] min-h-screen text-[#E9E8E1]">
+    <div ref={containerRef} className="w-full bg-[#E5E1D6] min-h-screen text-[#2c312a] font-sans selection:bg-[#9C8A71] selection:text-[#E5E1D6]">
+      
       {/* Cinematic Hero Section */}
-      <section className="relative w-full h-screen overflow-hidden">
-        <motion.img 
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-          src="/images/architecture_hero_1780051488278.png" 
-          alt="Earth architecture" 
-          className="absolute inset-0 w-full h-full object-cover object-[center_top]"
-        />
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
+      <section className="relative w-full h-[110vh] overflow-hidden bg-[#2c312a]">
+        <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-full">
+          <motion.img 
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+            src="/images/architecture_hero_1780051488278.png" 
+            alt="Earth architecture" 
+            className="w-full h-full object-cover object-[center_top] opacity-80"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2c312a] via-black/20 to-transparent"></div>
+        </motion.div>
+
+        <motion.div 
+          style={{ opacity: heroOpacity }}
+          className="absolute inset-0 flex flex-col justify-end items-center text-center pb-32 px-6 md:px-16"
+        >
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="flex flex-col items-center"
+            transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="text-[10px] md:text-[12px] tracking-[0.4em] uppercase font-medium mb-6 opacity-80 text-[#D4C3A3]">
+            <p className="text-[10px] md:text-[11px] tracking-[0.4em] uppercase font-medium mb-8 text-[#D4C3A3]">
               The Blueprint
             </p>
-            <h1 className="font-heading text-5xl md:text-7xl lg:text-[7.5rem] font-normal leading-[1.05] tracking-[-0.02em] mb-8">
-              Sculpted by nature.
+            <h1 className="font-heading text-6xl md:text-8xl lg:text-[10rem] font-light leading-[0.9] tracking-[-0.03em] mb-10 text-white">
+              Sculpted by <br/><i className="font-serif italic font-light text-[#D4C3A3]">nature.</i>
             </h1>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-24 md:py-32 px-8 md:px-16 lg:px-[120px] max-w-[1200px] mx-auto text-center">
-        <div className="w-12 h-[1px] bg-[#D4C3A3]/50 mx-auto mb-12"></div>
-        <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl leading-[1.3] font-light mb-10">
-          "Architecture should speak of its time and place, but yearn for timelessness. At GreenSoul, the place dictated the architecture."
-        </h2>
+      <section className="py-32 md:py-48 px-6 md:px-16 lg:px-[120px] max-w-[1400px] mx-auto text-center">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="w-1 h-12 bg-[#9C8A71] mx-auto mb-16"
+        ></motion.div>
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="font-heading text-4xl md:text-5xl lg:text-7xl leading-[1.1] font-light max-w-5xl mx-auto tracking-tight"
+        >
+          "Architecture should speak of its time and place, but yearn for <span className="font-serif italic text-[#9C8A71]">timelessness</span>. At GreenSoul, the place dictated the architecture."
+        </motion.h2>
       </section>
 
-      {/* Materials Section */}
-      <section className="py-24 md:py-32 bg-[#141412]">
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-[120px] flex flex-col lg:flex-row gap-20 lg:gap-32 items-center">
-          <div className="w-full lg:w-[45%] flex flex-col items-start">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#D4C3A3] mb-8">The Materials</p>
-            <h2 className="font-heading text-4xl md:text-5xl mb-8 leading-[1.1]">Rammed Earth & Reclaimed Timber</h2>
-            <div className="space-y-6 text-[15px] leading-[1.9] opacity-80 mb-10 text-[#E9E8E1]">
-              <p>
-                Our walls are built using the ancient technique of rammed earth. By compressing locally sourced soil, gravel, and a minimal amount of cement into wooden formworks, we created structures that are not only structurally sound but inherently beautiful.
-              </p>
-              <p>
-                The striations in the walls tell the story of the earth they came from. These thick walls provide exceptional thermal mass, keeping the interiors cool during the tropical summers and warm during the monsoon chills.
-              </p>
-            </div>
-            <button className="border border-[#D4C3A3]/40 px-8 py-4 text-[10px] tracking-[0.2em] uppercase font-medium hover:bg-[#D4C3A3] hover:text-[#1A1A18] transition-colors duration-500">
-              Read The Journal
-            </button>
-          </div>
-          <div className="w-full lg:w-[55%] h-[60vh] md:h-[70vh] relative overflow-hidden">
-            <img 
-              src="/images/artisan_craftsmanship_1780050139159.png" 
-              alt="Artisan details" 
-              className="w-full h-full object-cover"
-            />
+      {/* Materials Section - Editorial Asymmetry */}
+      <section className="py-24 md:py-32 bg-[#E9E8E1] relative">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-[120px]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-0 items-center">
+            
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-5 lg:pr-16 relative z-10"
+            >
+              <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#9C8A71] mb-8">The Materials</p>
+              <h2 className="font-heading text-5xl md:text-6xl mb-10 leading-[1] tracking-tight text-[#2c312a]">
+                Rammed Earth & <br/><span className="font-serif italic font-light text-[#9C8A71]">Reclaimed Timber</span>
+              </h2>
+              <div className="space-y-8 text-[15px] leading-[2] font-light text-[#4A4D48] mb-12">
+                <p>
+                  Our walls are built using the ancient technique of rammed earth. By compressing locally sourced soil, gravel, and a minimal amount of cement into wooden formworks, we created structures that are not only structurally sound but inherently beautiful.
+                </p>
+                <p>
+                  The striations in the walls tell the story of the earth they came from. These thick walls provide exceptional thermal mass, keeping the interiors cool during the tropical summers and warm during the monsoon chills.
+                </p>
+              </div>
+              <button className="group flex items-center gap-4 text-[10px] tracking-[0.2em] uppercase font-medium text-[#2c312a] transition-all">
+                <span className="pb-1 border-b border-[#9C8A71]/30 group-hover:border-[#9C8A71] transition-colors">Read The Journal</span>
+                <ArrowRight size={14} className="text-[#9C8A71] group-hover:translate-x-2 transition-transform duration-500" />
+              </button>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-7 relative"
+            >
+              <div className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden">
+                <motion.img 
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                  src="/images/artisan_craftsmanship_1780050139159.png" 
+                  alt="Artisan details" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-[#9C8A71]/10 -z-10 rounded-full blur-3xl"></div>
+            </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* Sustainability Features */}
-      <section className="py-24 md:py-40 max-w-[1400px] mx-auto px-8 md:px-16 lg:px-[120px]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+      {/* Sustainability Features - Architectural Grid */}
+      <section className="py-32 md:py-48 max-w-[1600px] mx-auto px-6 md:px-16 lg:px-[120px]">
+        <div className="mb-24 flex justify-between items-end">
+          <h2 className="font-heading text-5xl md:text-7xl leading-[1] tracking-tight">
+            Design <span className="font-serif italic font-light text-[#9C8A71]">Integrity</span>
+          </h2>
+          <p className="hidden md:block text-[14px] leading-[2] font-light max-w-sm text-[#4A4D48]">
+            Built to disappear back into the earth, leaving nothing but footprints.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16">
           {[
-            { title: "Zero Concrete Footprint", desc: "Foundations utilize dry-stacked stone to prevent disrupting subterranean water flows." },
-            { title: "Passive Cooling", desc: "Cross-ventilation and thermal mass eliminate the need for artificial air conditioning." },
-            { title: "Solar Integration", desc: "The estate runs predominantly on a discreet solar array hidden in the canopy." },
-            { title: "Water Harvesting", desc: "100% of rainwater is harvested and directed back into the local aquifers." }
+            { title: "Zero Concrete", span: "Footprint", desc: "Foundations utilize dry-stacked stone to prevent disrupting subterranean water flows." },
+            { title: "Passive", span: "Cooling", desc: "Cross-ventilation and thermal mass eliminate the need for artificial air conditioning." },
+            { title: "Solar", span: "Integration", desc: "The estate runs predominantly on a discreet solar array hidden in the canopy." },
+            { title: "Water", span: "Harvesting", desc: "100% of rainwater is harvested and directed back into the local aquifers." }
           ].map((feature, idx) => (
-            <div key={idx} className="flex flex-col border-t border-[#D4C3A3]/20 pt-8">
-              <span className="text-[10px] tracking-[0.2em] font-medium text-[#D4C3A3] mb-4">0{idx + 1}</span>
-              <h3 className="font-heading text-2xl mb-4">{feature.title}</h3>
-              <p className="text-[14px] leading-[1.8] opacity-70">{feature.desc}</p>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              key={idx} 
+              className="flex flex-col border-t border-[#2c312a]/20 pt-8 group"
+            >
+              <span className="text-[10px] tracking-[0.3em] font-medium text-[#9C8A71] mb-8">0{idx + 1}</span>
+              <h3 className="font-heading text-3xl mb-4 group-hover:text-[#9C8A71] transition-colors duration-500">
+                {feature.title} <br/><span className="font-serif italic">{feature.span}</span>
+              </h3>
+              <p className="text-[14px] leading-[2] font-light text-[#4A4D48] mt-auto">{feature.desc}</p>
+            </motion.div>
           ))}
         </div>
       </section>
+
     </div>
   );
 }

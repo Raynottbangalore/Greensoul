@@ -37,6 +37,8 @@ export default function Book() {
       const bookingRef = doc(collection(db, 'bookings'));
       await setDoc(bookingRef, {
         ...data,
+        userId: auth.currentUser.uid,
+        authEmail: auth.currentUser.email,
         status: 'pending',
         createdAt: new Date()
       });
@@ -54,8 +56,8 @@ export default function Book() {
     <div className="w-full min-h-screen bg-[#E9E8E1] flex flex-col lg:flex-row overflow-hidden relative">
       
       {/* LEFT SIDE - Cinematic Image */}
-      <div className="w-full lg:w-1/2 h-[50vh] lg:h-auto relative">
-        <div className="absolute inset-0 bg-black/20 z-10"></div>
+      <div className="w-full lg:w-[40%] h-[50vh] lg:h-auto relative border-r border-[#2c312a]/10">
+        <div className="absolute inset-0 bg-black/10 z-10"></div>
         <img 
           src={trekWonder} 
           alt="Luxury Rainforest Retreat" 
@@ -73,7 +75,7 @@ export default function Book() {
       </div>
 
       {/* RIGHT SIDE - Booking Form Card */}
-      <div className="w-full lg:w-1/2 min-h-screen flex items-center justify-center py-24 px-6 lg:px-16 xl:px-24 bg-[#F5F4EF] relative z-20">
+      <div className="w-full lg:w-[60%] min-h-screen flex justify-center pt-40 lg:pt-56 pb-24 px-6 lg:px-16 xl:px-24 bg-[#F5F4EF] relative z-20">
         
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
@@ -81,7 +83,7 @@ export default function Book() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-full max-w-xl"
         >
-          <div className="mb-12">
+          <div className="mb-12 pt-8">
             <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#5a5a52] mb-4">
               Book Your Escape
             </p>
@@ -148,8 +150,9 @@ export default function Book() {
                 <select 
                   {...register("guests", { required: "Please select guests" })}
                   className="bg-transparent border-b border-[#2c312a]/20 pb-3 outline-none focus:border-[#D4AF37] transition-colors font-heading text-lg px-1 text-[#2c312a] appearance-none cursor-pointer" 
+                  defaultValue=""
                 >
-                  <option value="" disabled selected className="text-gray-400">Select</option>
+                  <option value="" disabled className="text-gray-400">Select</option>
                   {[1,2,3,4,5,6].map(num => (
                     <option key={num} value={num} className="text-[#2c312a]">{num} {num === 1 ? 'Guest' : 'Guests'}</option>
                   ))}
@@ -184,22 +187,7 @@ export default function Book() {
               </div>
             </div>
 
-            {/* Preferred Stay Zone */}
-            <div className="flex flex-col gap-2 group relative">
-              <label className="text-[9px] tracking-[0.2em] uppercase font-medium text-[#5a5a52] ml-1 transition-colors group-focus-within:text-[#D4AF37]">
-                Preferred Stay Zone
-              </label>
-              <select 
-                {...register("stayZone", { required: "Please select a stay zone" })}
-                className="bg-transparent border-b border-[#2c312a]/20 pb-3 outline-none focus:border-[#D4AF37] transition-colors font-heading text-lg px-1 text-[#2c312a] appearance-none cursor-pointer" 
-              >
-                <option value="" disabled selected className="text-gray-400">Select your sanctuary</option>
-                <option value="Mist Valley Cottages" className="text-[#2c312a]">Mist Valley Cottages</option>
-                <option value="Heritage Earth Suites" className="text-[#2c312a]">Heritage Earth Suites</option>
-                <option value="The Malnad Collective" className="text-[#2c312a]">The Malnad Collective</option>
-              </select>
-              {errors.stayZone && <span className="text-red-500 text-[10px] absolute -bottom-5">{errors.stayZone.message}</span>}
-            </div>
+
 
             {/* Special Requests */}
             <div className="flex flex-col gap-2 group relative">

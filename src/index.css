@@ -60,3 +60,11 @@
 .animate-grain {
   animation: film-grain 8s steps(10) infinite;
 }
+
+/* Hide Google Translate top bar & prevent layout shift */
+.skiptranslate iframe, .goog-te-banner-frame {
+  display: none !important;
+}
+body {
+  top: 0px !important; 
+}

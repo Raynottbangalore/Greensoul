@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Book from './pages/Book';
 import Gallery from './pages/Gallery';
+import MyReservations from './pages/MyReservations';
 import { Toaster } from 'react-hot-toast';
 import { ErrorBoundary } from './ErrorBoundary';
 
@@ -66,6 +67,7 @@ function AppContent() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/book" element={<Book />} />
+            <Route path="/my-reservations" element={<MyReservations />} />
             
             {/* Admin Routes */}
             <Route path="/admin" element={<AdminProtectedRoute><AdminLayout /></AdminProtectedRoute>}>
