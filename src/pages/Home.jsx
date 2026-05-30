@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll } from 'framer-motion';
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { ChevronDown, ArrowRight, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import {
   cycleWonder,
@@ -17,6 +17,7 @@ import {
 } from '../greenhousefiles';
 export default function Home() {
   const containerRef = useRef(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -26,19 +27,26 @@ export default function Home() {
   return (
     <div ref={containerRef} className="w-full bg-[#0B120C] text-[#E4E0D9] font-sans selection:bg-[#9C8A71] selection:text-[#0B120C]">
       {/* Hero Section - Exactly as it is */}
-      <section className="relative min-h-[100vh] w-full flex items-center bg-[#e8e6e1] overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section className="relative min-h-[100vh] w-full flex items-center bg-[#0B120C] overflow-hidden">
+        <div className="absolute inset-0 z-0 flex items-center justify-center">
+          {!isVideoLoaded && (
+            <div className="absolute z-10 flex flex-col items-center justify-center text-[#9C8A71]">
+              <Loader2 className="w-8 h-8 animate-spin mb-4" />
+              <span className="text-[10px] tracking-[0.3em] uppercase font-medium">Loading...</span>
+            </div>
+          )}
           <video
             src="/images/rain_tree.mp4"
-            className="absolute inset-0 w-full h-full object-cover"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
             style={{ transform: 'scale(1.6)', transformOrigin: 'center' }}
             autoPlay
             loop
             muted
             playsInline
+            onCanPlay={() => setIsVideoLoaded(true)}
           />
-          <div className="absolute inset-0 bg-black/20"></div>
-          <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-black/20 z-0"></div>
+          <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/60 to-transparent z-0"></div>
         </div>
         
         {/* Transition Gradient overlay at the bottom of the hero to blend into dark forest */}
@@ -89,6 +97,7 @@ export default function Home() {
                 src={page2} 
                 alt="Mist Valley" 
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           </motion.div>
@@ -104,7 +113,7 @@ export default function Home() {
           transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0 w-full h-full"
         >
-          <img src={page1} alt="Monsoon Immersion" className="w-full h-full object-cover opacity-60" />
+          <img src={page1} alt="Monsoon Immersion" className="w-full h-full object-cover opacity-60" loading="lazy" />
           <div className="absolute inset-0 bg-[#0B120C]/30 mix-blend-multiply"></div>
           <div className="absolute inset-y-0 left-0 w-full md:w-2/3 bg-gradient-to-r from-[#0B120C] via-[#0B120C]/60 to-transparent"></div>
           <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0B120C] to-transparent"></div>
@@ -157,6 +166,7 @@ export default function Home() {
                 src={heritageSuite} 
                 alt="Earth Heritage Suites" 
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-[#0B120C]/10 group-hover:bg-transparent transition-colors duration-700"></div>
             </div>
@@ -186,6 +196,7 @@ export default function Home() {
                 src={malnadSecond} 
                 alt="The Malnad House" 
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-[#0B120C]/10 group-hover:bg-transparent transition-colors duration-700"></div>
             </div>
@@ -242,18 +253,18 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-4 md:gap-8">
                 <div className="flex flex-col gap-4 md:gap-8 translate-y-12">
                   <div className="aspect-[3/4] overflow-hidden group shadow-xl">
-                    <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 1.5 }} src={eveningWalk} alt="Evening Walk" className="w-full h-full object-cover" />
+                    <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 1.5 }} src={eveningWalk} alt="Evening Walk" className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div className="aspect-square overflow-hidden group shadow-xl">
-                    <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 1.5 }} src={page5b} alt="Tea by the hills" className="w-full h-full object-cover" />
+                    <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 1.5 }} src={page5b} alt="Tea by the hills" className="w-full h-full object-cover" loading="lazy" />
                   </div>
                 </div>
                 <div className="flex flex-col gap-4 md:gap-8">
                   <div className="aspect-square overflow-hidden group shadow-xl">
-                    <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 1.5 }} src={cycleWonder} alt="Cycling" className="w-full h-full object-cover" />
+                    <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 1.5 }} src={cycleWonder} alt="Cycling" className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div className="aspect-[3/4] overflow-hidden group shadow-xl">
-                    <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 1.5 }} src={page5cWonder} alt="Stargazing" className="w-full h-full object-cover" />
+                    <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 1.5 }} src={page5cWonder} alt="Stargazing" className="w-full h-full object-cover" loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -273,6 +284,7 @@ export default function Home() {
             src={page3} 
             alt="Dining" 
             className="w-full h-full object-cover opacity-60"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-[#0B120C]/50 mix-blend-multiply"></div>
           <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#0B120C] to-transparent"></div>
@@ -319,6 +331,7 @@ export default function Home() {
                 src={page4} 
                 alt="Earth Architecture" 
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           </motion.div>
