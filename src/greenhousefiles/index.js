@@ -13,3 +13,8 @@ export { default as page5e } from "./Page 5 e-unblur.png";
 export { default as trekWonder } from "./Treck-wonder-3.png";
 export { default as heritageSuite } from "./heritage_earth_suite_1779811380883.png";
 export { default as malnadSecond } from "./malnadsecondimage.png";
+export { default as newImage } from "./new.png";
+export { default as diningImage } from "./dining_experience.png";
+export { default as dining1 } from "./dining_1.png";
+export { default as dining2 } from "./dining_2.png";
+export { default as dining3 } from "./dining_3.png";

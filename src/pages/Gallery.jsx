@@ -19,7 +19,11 @@ import {
   page5e,
   trekWonder,
   heritageSuite,
-  malnadSecond
+  malnadSecond,
+  newImage,
+  dining1,
+  dining2,
+  dining3
 } from '../greenhousefiles';
 
 export default function Gallery() {
@@ -62,33 +66,37 @@ export default function Gallery() {
   const images = [
     { id: 1, category: 'architecture', src: earthHeritage1, alt: 'Earth Heritage Suite' },
     { id: 2, category: 'rainforest', src: page1, alt: 'Mist over the Valley' },
-    { id: 3, category: 'dining', src: page5b, alt: 'Tea by the Hills' },
-    { id: 4, category: 'architecture', src: page4, alt: 'Artisan Details' },
+    { id: 3, category: 'architecture', src: page5b, alt: 'Tea by the Hills' },
+    { id: 4, category: 'landscapes', src: page4, alt: 'Artisan Details' },
     { id: 5, category: 'landscapes', src: page2, alt: 'Morning Walk' },
     { id: 6, category: 'experiences', src: eveningWalk, alt: 'Evening Stroll' },
     { id: 7, category: 'stay', src: page5d, alt: 'Indoor Living' },
     { id: 8, category: 'stay', src: heritageSuite, alt: 'Heritage Suite Exterior' },
     { id: 9, category: 'stay', src: malnadSecond, alt: 'Verandah Living' },
     { id: 10, category: 'rainforest', src: trekWonder, alt: 'Nature Trails' },
-    { id: 11, category: 'rainforest', src: page4b, alt: 'Craftsmanship' },
+    { id: 11, category: 'stay', src: page4b, alt: 'Craftsmanship' },
     { id: 12, category: 'landscapes', src: page5cWonder, alt: 'Scenic Vistas' },
     { id: 13, category: 'architecture', src: page5e, alt: 'Exterior Paths' },
     { id: 14, category: 'rainforest', src: page3, alt: 'Forest Silence' },
-    { id: 15, category: 'experiences', src: cycleWonder, alt: 'Plantation Cycling' }
+    { id: 15, category: 'experiences', src: cycleWonder, alt: 'Plantation Cycling' },
+    { id: 16, category: 'stay', src: newImage, alt: 'Stay Experience' },
+    { id: 17, category: 'dining', src: dining1, alt: 'Rainforest Dining Experience' },
+    { id: 18, category: 'dining', src: dining2, alt: 'Luxury Breakfast Spread' },
+    { id: 19, category: 'dining', src: dining3, alt: 'Intimate Fine Dining' }
   ];
 
   const combinedImages = [...dynamicImages, ...images];
-  
+
   useEffect(() => {
     const categoriesMap = new Map();
     categoriesMap.set('all', 'All');
-    
+
     // Ordered base categories as requested
     const baseCategories = ['rainforest', 'architecture', 'stay', 'dining', 'experiences', 'landscapes'];
     baseCategories.forEach(cat => {
       categoriesMap.set(cat, cat.charAt(0).toUpperCase() + cat.slice(1));
     });
-    
+
     combinedImages.forEach(img => {
       if (img.category && img.category.toLowerCase() !== 'all') {
         const id = img.category.toLowerCase().trim();
@@ -98,7 +106,7 @@ export default function Gallery() {
         }
       }
     });
-    
+
     setCategories(Array.from(categoriesMap).map(([id, label]) => ({ id, label })));
   }, [dynamicImages]);
 
@@ -106,26 +114,26 @@ export default function Gallery() {
 
   return (
     <div ref={containerRef} className="w-full bg-[#0B120C] min-h-screen text-[#E4E0D9] font-sans selection:bg-[#9C8A71] selection:text-[#0B120C]">
-      
+
       {/* SECTION 1: Gallery Hero */}
       <section className="relative w-full h-[100vh] overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-full z-0">
-          <motion.img 
+          <motion.img
             initial={{ scale: 1.15 }}
             animate={{ scale: 1 }}
             transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
-            src={page1} 
-            alt="Gallery Hero - Mist over valley" 
+            src={page1}
+            alt="Gallery Hero - Mist over valley"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-[#0B120C]/30 mix-blend-multiply"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B120C] via-[#0B120C]/20 to-transparent"></div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="absolute inset-0 flex flex-col justify-end items-center pb-24 px-6 text-center z-10"
         >
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -139,7 +147,7 @@ export default function Gallery() {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
@@ -154,8 +162,8 @@ export default function Gallery() {
       {/* SECTION 2: Featured Moments */}
       <section className="py-32 md:py-48 px-6 md:px-16 lg:px-[120px] max-w-[1600px] mx-auto">
         <div className="flex flex-col gap-24 md:gap-40">
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
@@ -163,11 +171,11 @@ export default function Gallery() {
             className="w-full"
           >
             <div className="aspect-[16/9] lg:aspect-[21/9] overflow-hidden group shadow-2xl relative">
-              <motion.img 
+              <motion.img
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-                src={page2} 
-                alt="Morning mist in the estate" 
+                src={page2}
+                alt="Morning mist in the estate"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-[#0B120C]/10 group-hover:bg-transparent transition-colors duration-700"></div>
@@ -178,7 +186,7 @@ export default function Gallery() {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
@@ -186,11 +194,11 @@ export default function Gallery() {
             className="w-full flex flex-col lg:items-end"
           >
             <div className="w-full lg:w-[85%] aspect-[16/9] lg:aspect-[16/7] overflow-hidden group shadow-2xl relative">
-              <motion.img 
+              <motion.img
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-                src={eveningWalk} 
-                alt="Evening walk through the rainforest" 
+                src={eveningWalk}
+                alt="Evening walk through the rainforest"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-[#0B120C]/10 group-hover:bg-transparent transition-colors duration-700"></div>
@@ -216,7 +224,7 @@ export default function Gallery() {
           </h2>
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -230,7 +238,7 @@ export default function Gallery() {
             >
               {cat.label}
               {filter === cat.id && (
-                <motion.div 
+                <motion.div
                   layoutId="filter-indicator"
                   className="absolute -bottom-3 left-0 right-0 h-[1px] bg-[#9C8A71]"
                 />
@@ -242,7 +250,7 @@ export default function Gallery() {
 
       {/* SECTION 4: Luxury Masonry Gallery */}
       <section className="px-6 md:px-16 lg:px-[120px] max-w-[1600px] mx-auto pb-32">
-        <motion.div 
+        <motion.div
           layout
           className="columns-1 md:columns-2 lg:columns-3 gap-6 md:gap-10 space-y-6 md:space-y-10"
         >
@@ -258,16 +266,16 @@ export default function Gallery() {
                 className="relative overflow-hidden group cursor-pointer break-inside-avoid shadow-xl bg-[#101912]"
                 onClick={() => setSelectedImage(img)}
               >
-                <motion.img 
+                <motion.img
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                  src={img.src} 
-                  alt={img.alt} 
+                  src={img.src}
+                  alt={img.alt}
                   className="w-full h-auto object-cover opacity-90 group-hover:opacity-100"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-[#0B120C]/20 group-hover:bg-transparent transition-colors duration-700"></div>
-                
+
                 {/* Hover overlay text */}
                 <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#0B120C] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end">
                   <p className="text-[#F3E9DC] font-serif italic text-lg tracking-wide">{img.alt}</p>
@@ -290,7 +298,7 @@ export default function Gallery() {
           <div className="flex flex-col gap-32 lg:gap-48">
             {/* Story 1 */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0 items-center">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-10%" }}
@@ -304,8 +312,8 @@ export default function Gallery() {
                 </p>
                 <div className="w-16 h-[1px] bg-[#9C8A71]/30"></div>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-10%" }}
@@ -313,7 +321,7 @@ export default function Gallery() {
                 className="lg:col-span-7 relative"
               >
                 <div className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden group shadow-2xl">
-                  <img src={earthHeritage1} alt="Earth Architecture" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out"/>
+                  <img src={earthHeritage1} alt="Earth Architecture" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out" />
                 </div>
                 {/* Overlapping small image */}
                 <div className="hidden lg:block absolute -bottom-16 -left-20 w-64 aspect-[3/4] overflow-hidden shadow-2xl border-4 border-[#101912] z-20">
@@ -324,7 +332,7 @@ export default function Gallery() {
 
             {/* Story 2 */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0 items-center">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-10%" }}
@@ -332,11 +340,11 @@ export default function Gallery() {
                 className="lg:col-span-7 relative order-2 lg:order-1"
               >
                 <div className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden group shadow-2xl">
-                  <img src={trekWonder} alt="Rainforest Trekking" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out"/>
+                  <img src={trekWonder} alt="Rainforest Trekking" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out" />
                 </div>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-10%" }}
@@ -357,16 +365,16 @@ export default function Gallery() {
 
       {/* SECTION 7: Closing Section */}
       <section className="relative w-full h-[80vh] min-h-[600px] overflow-hidden">
-        <motion.div 
+        <motion.div
           initial={{ scale: 1.1 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0 w-full h-full z-0"
         >
-          <img 
-            src={malnadSecond} 
-            alt="Stay closing view" 
+          <img
+            src={malnadSecond}
+            alt="Stay closing view"
             className="w-full h-full object-cover opacity-60"
           />
           <div className="absolute inset-0 bg-[#0B120C]/40 mix-blend-multiply"></div>
@@ -392,8 +400,8 @@ export default function Gallery() {
               <div className="relative flex items-center gap-6 text-[10px] md:text-[11px] tracking-[0.3em] uppercase font-medium text-[#E4E0D9] transition-colors duration-500">
                 <span className="w-12 h-[1px] bg-[#9C8A71]/50 group-hover:w-20 group-hover:bg-[#9C8A71] transition-all duration-700 ease-[0.16,1,0.3,1]"></span>
                 <span className="relative overflow-hidden flex h-[14px]">
-                   <span className="inline-block transform group-hover:-translate-y-full transition-transform duration-500 ease-[0.16,1,0.3,1]">Book Your Escape</span>
-                   <span className="absolute top-full left-0 inline-block transform group-hover:-translate-y-full transition-transform duration-500 ease-[0.16,1,0.3,1] text-white">Book Your Escape</span>
+                  <span className="inline-block transform group-hover:-translate-y-full transition-transform duration-500 ease-[0.16,1,0.3,1]">Book Your Escape</span>
+                  <span className="absolute top-full left-0 inline-block transform group-hover:-translate-y-full transition-transform duration-500 ease-[0.16,1,0.3,1] text-white">Book Your Escape</span>
                 </span>
                 <span className="w-12 h-[1px] bg-[#9C8A71]/50 group-hover:w-20 group-hover:bg-[#9C8A71] transition-all duration-700 ease-[0.16,1,0.3,1]"></span>
               </div>
@@ -405,7 +413,7 @@ export default function Gallery() {
       {/* SECTION 5: Immersive Image Experience (Modal) */}
       <AnimatePresence>
         {selectedImage && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -413,24 +421,24 @@ export default function Gallery() {
             className="fixed inset-0 z-[100] bg-[#0B120C]/98 flex items-center justify-center p-4 md:p-12 cursor-pointer backdrop-blur-md"
             onClick={() => setSelectedImage(null)}
           >
-            <button 
+            <button
               className="absolute top-10 right-10 text-[#A3A19B] hover:text-[#F3E9DC] transition-colors z-[101]"
               onClick={() => setSelectedImage(null)}
             >
               <X size={32} strokeWidth={1} />
             </button>
-            <motion.img 
+            <motion.img
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              src={selectedImage.src} 
-              alt={selectedImage.alt} 
+              src={selectedImage.src}
+              alt={selectedImage.alt}
               className="max-w-[90vw] max-h-[90vh] object-contain shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
             {selectedImage.alt && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
