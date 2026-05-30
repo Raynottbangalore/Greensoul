@@ -54,7 +54,7 @@ export default function Experiences() {
   ];
 
   return (
-    <div ref={containerRef} className="w-full bg-[#141413] min-h-screen text-[#E4E0D9] font-sans selection:bg-[#9C8A71] selection:text-[#141413]">
+    <div ref={containerRef} className="w-full bg-[#141413] min-h-screen text-[#E4E0D9] font-sans selection:bg-[#9C8A71] selection:text-[#141413] overflow-x-hidden">
       
       {/* Cinematic Hero Section */}
       <section className="relative w-full h-[110vh] overflow-hidden">

@@ -39,7 +39,7 @@ function AppContent() {
   const isAdminRoute = location.pathname.startsWith('/admin');
 
   return (
-    <div className="min-h-screen font-body bg-brand-green text-brand-white selection:bg-brand-gold/30 selection:text-brand-white">
+    <div className="min-h-screen font-body bg-[#0B120C] text-brand-white selection:bg-brand-gold/30 selection:text-brand-white">
       <Toaster 
         position="top-center"
         toastOptions={{
