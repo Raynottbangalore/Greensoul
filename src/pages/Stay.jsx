@@ -1,16 +1,74 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mountain, Leaf, Coffee } from 'lucide-react';
+import { ArrowRight, Mountain, Leaf, Coffee, ChevronDown } from 'lucide-react';
+import { page3, page4b, page5cWonder, newImage } from '../greenhousefiles';
 
 export default function Stay() {
   return (
     <div id="stay" className="w-full bg-[#E9E8E1]">
+      {/* STAY PAGE HERO SECTION */}
+      <section className="relative min-h-[100vh] w-full flex items-center bg-[#0B120C] overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={page3}
+            alt="Stay Landscape"
+            className="absolute inset-0 w-full h-full object-cover object-bottom"
+          />
+          {/* Gradients for text legibility and blending */}
+          <div className="absolute inset-0 bg-black/20 z-0"></div>
+          <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/60 to-transparent z-0"></div>
+          <div className="absolute inset-y-0 left-0 w-full md:w-2/3 lg:w-1/2 bg-gradient-to-r from-[#0B120C]/90 via-[#0B120C]/50 to-transparent z-0"></div>
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/40 to-transparent z-[50]"></div>
+        </div>
+        
+        {/* Hero Content */}
+        <div className="relative z-10 w-full px-4 md:px-12 pt-24 flex flex-col items-center md:items-start text-center md:text-left">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+            className="max-w-2xl flex flex-col items-center md:items-start"
+          >
+            <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#A3A19B] mb-6">
+              Rooted in the wild. Made for slow living.
+            </p>
+            
+            <h1 className="font-heading text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight text-[#F3E9DC] mb-8">
+              Discover<br/>
+              The Stay
+            </h1>
+
+            <div className="w-12 h-[1px] bg-[#A3A19B]/40 mb-8 mx-auto md:mx-0"></div>
+            
+            <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#A3A19B] mb-6">
+              Three distinct ways to experience GreenSoul
+            </p>
+            
+            <p className="text-[15px] leading-[2] font-light text-[#E4E0D9] max-w-md mb-12">
+              Each dwelling has been consciously positioned within the shifting moods of mist, monsoon, forest, and valley — where silence, changing light, and the rhythms of the Western Ghats become part of everyday living.
+            </p>
+
+            <button onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })} className="inline-flex items-center gap-4 px-8 py-4 border border-[#A3A19B]/40 text-[10px] tracking-[0.2em] uppercase font-medium text-[#F3E9DC] hover:bg-[#F3E9DC] hover:text-[#0B120C] transition-all duration-500 w-fit group cursor-pointer">
+              Explore The Dwellings
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center text-[#F3E9DC] cursor-pointer z-[60] animate-bounce-slow" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}>
+          <span className="text-[10px] tracking-[0.3em] uppercase font-medium mb-3 opacity-90 drop-shadow-md">Scroll to explore</span>
+          <ChevronDown size={20} strokeWidth={1.5} className="opacity-90 drop-shadow-md" />
+        </div>
+      </section>
+
       {/* Section Title Gap */}
-      <div className="w-full pt-48 pb-20 md:pt-60 md:pb-32 flex flex-col items-center justify-center text-center px-6 relative z-10">
+      <div className="w-full pt-32 pb-20 md:pt-48 md:pb-32 flex flex-col items-center justify-center text-center px-6 relative z-10 bg-[#E9E8E1]">
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8 }}
           className="text-[10px] md:text-[12px] tracking-[0.35em] font-medium uppercase mb-6 text-[#5a5a52] opacity-80"
         >
@@ -19,16 +77,16 @@ export default function Stay() {
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 1, delay: 0.2 }}
           className="font-heading text-[3.5rem] md:text-[5rem] lg:text-[6rem] text-[#2c312a] font-normal leading-[1.1] tracking-[-0.02em]"
         >
-          Stay Experiences
+          Valley View
         </motion.h2>
         <motion.div 
           initial={{ height: 0 }}
           whileInView={{ height: 100 }}
-          viewport={{ once: true, margin: "-10%" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 1.2, delay: 0.4 }}
           className="w-[1px] bg-[#2c312a]/20 mt-16"
         ></motion.div>
@@ -39,21 +97,29 @@ export default function Stay() {
         {/* Background Image - Right aligned */}
         <div className="absolute inset-0 right-0 w-full md:w-[70%] lg:w-[65%] ml-auto z-0">
           <img
-            src="/images/Mist Valley Cottages.png"
+            src="/images/mist_valley_opt.jpg"
             alt="Mist Valley Cottage Interior"
             className="w-full h-full object-cover object-[80%_center] md:object-right"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 
-        {/* Gradient Overlay to fade the left side smoothly into the image without mist */}
-        <div className="absolute inset-0 z-[5] w-full bg-gradient-to-r from-[#E9E8E1] from-[35%] md:from-[35%] lg:from-[40%] to-transparent to-[90%] md:to-[60%] lg:to-[55%]"></div>
+        {/* Mobile Gradient Overlay (Extended for text readability) */}
+        <div 
+          className="absolute inset-0 z-[5] w-full pointer-events-none md:hidden"
+          style={{ background: 'linear-gradient(to right, #E9E8E1 0%, #E9E8E1 45%, rgba(233, 232, 225, 0.85) 80%, rgba(233, 232, 225, 0) 100%)' }}
+        ></div>
+        
+        {/* Desktop Gradient Overlay */}
+        <div className="absolute inset-0 z-[5] w-full bg-gradient-to-r from-[#E9E8E1] from-[35%] lg:from-[40%] to-[#E9E8E1]/0 to-[60%] lg:to-[55%] hidden md:block"></div>
 
         {/* Content */}
         <div className="relative z-10 px-8 md:px-16 lg:px-[120px] w-full mx-auto flex flex-col justify-center min-h-[100vh] pt-[15vh] pb-24">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 1, ease: "easeOut" }}
             className="max-w-[34rem] text-[#2c312a]"
           >
@@ -124,7 +190,7 @@ export default function Stay() {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8 }}
             className="max-w-[420px] mx-auto lg:ml-[12%] relative z-10 flex flex-col"
           >
@@ -191,12 +257,34 @@ export default function Stay() {
           </motion.div>
         </div>
       </section>
+
+      {/* Mist Valley Cottages Details Section */}
+      <section className="w-full flex flex-col md:flex-row-reverse items-stretch min-h-[40vh] md:min-h-[45vh] lg:min-h-[50vh] bg-[#E9E8E1]">
+        {/* Right Image */}
+        <div className="w-full md:w-[50%] lg:w-[42%] h-[50vh] md:h-auto relative">
+          <img
+            src={page4b}
+            alt="Mist Valley Cottage Details"
+            className="absolute inset-0 w-full h-full object-cover object-bottom"
+          />
+        </div>
+
+        {/* Content - Left aligned */}
+        <div className="w-full md:w-[50%] lg:flex-1 flex justify-center md:justify-start items-center px-8 py-16 md:py-20 md:px-16 lg:pl-[120px] xl:pl-[160px]">
+          <div className="w-full md:max-w-[20rem] flex items-center pr-6 md:pr-10 border-r border-[#2c312a]/30 text-right">
+            <p className="font-heading text-[1.1rem] md:text-[1.15rem] leading-[1.8] text-[#4a4a40] opacity-90 w-full">
+              Seamlessly blended with the landscape,<br className="hidden md:block" /> where every window frames<br className="hidden md:block" /> the whispering wild.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Section Title Gap */}
       <div className="w-full pt-32 pb-20 md:pt-48 md:pb-32 flex flex-col items-center justify-center text-center px-6 relative z-10 bg-[#E9E8E1]">
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8 }}
           className="text-[10px] md:text-[12px] tracking-[0.35em] font-medium uppercase mb-6 text-[#5a5a52] opacity-80"
         >
@@ -205,7 +293,7 @@ export default function Stay() {
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 1, delay: 0.2 }}
           className="font-heading text-[3.5rem] md:text-[5rem] lg:text-[6rem] text-[#2c312a] font-normal leading-[1.1] tracking-[-0.02em]"
         >
@@ -214,7 +302,7 @@ export default function Stay() {
         <motion.div 
           initial={{ height: 0 }}
           whileInView={{ height: 100 }}
-          viewport={{ once: true, margin: "-10%" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 1.2, delay: 0.4 }}
           className="w-[1px] bg-[#2c312a]/20 mt-16"
         ></motion.div>
@@ -225,21 +313,29 @@ export default function Stay() {
         {/* Background Image - Right aligned */}
         <div className="absolute inset-0 right-0 w-full md:w-[85%] lg:w-[80%] ml-auto z-0">
           <img
-            src="/images/EarthHeritageiamge1.png"
+            src="/images/earth_heritage_opt.jpg"
             alt="Earth Heritage Suites"
-            className="w-full h-full object-cover object-[center_center] md:object-[70%_center]"
+            className="w-full h-full object-cover object-right md:object-[70%_center]"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 
-        {/* Gradient Overlay to fade the left side smoothly into the image */}
-        <div className="absolute inset-0 z-[5] w-full bg-gradient-to-r from-[#E9E8E1] from-[25%] md:from-[30%] lg:from-[32%] to-transparent to-[75%] md:to-[48%] lg:to-[42%]"></div>
+        {/* Mobile Gradient Overlay (Extended for text readability) */}
+        <div 
+          className="absolute inset-0 z-[5] w-full pointer-events-none md:hidden"
+          style={{ background: 'linear-gradient(to right, #E9E8E1 0%, #E9E8E1 45%, rgba(233, 232, 225, 0.85) 80%, rgba(233, 232, 225, 0) 100%)' }}
+        ></div>
+        
+        {/* Desktop Gradient Overlay */}
+        <div className="absolute inset-0 z-[5] w-full bg-gradient-to-r from-[#E9E8E1] from-[30%] lg:from-[32%] to-[#E9E8E1]/0 to-[48%] lg:to-[42%] hidden md:block"></div>
 
         {/* Content */}
         <div className="relative z-10 px-8 md:px-16 lg:px-[120px] w-full mx-auto flex flex-col justify-center min-h-[100vh] pt-[15vh] pb-16">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 1, ease: "easeOut" }}
             className="max-w-[34rem] text-[#2c312a]"
           >
@@ -275,7 +371,7 @@ export default function Stay() {
           <img
             src="/images/EarthHeritageiamge2.png"
             alt="Earth Heritage Details"
-            className="absolute inset-0 w-full h-full object-cover object-[center_center] md:object-[60%_center]"
+            className="absolute inset-0 w-full h-full object-cover object-right md:object-[60%_center]"
           />
         </div>
 
@@ -294,7 +390,7 @@ export default function Stay() {
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8 }}
           className="text-[10px] md:text-[12px] tracking-[0.35em] font-medium uppercase mb-6 text-[#5a5a52] opacity-80"
         >
@@ -303,16 +399,114 @@ export default function Stay() {
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 1, delay: 0.2 }}
           className="font-heading text-[3.5rem] md:text-[5rem] lg:text-[6rem] text-[#2c312a] font-normal leading-[1.1] tracking-[-0.02em]"
         >
-          Heritage Spaces
+          Heritage Family Rooms
         </motion.h2>
         <motion.div 
           initial={{ height: 0 }}
           whileInView={{ height: 100 }}
-          viewport={{ once: true, margin: "-10%" }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 1.2, delay: 0.4 }}
+          className="w-[1px] bg-[#2c312a]/20 mt-16"
+        ></motion.div>
+      </div>
+
+      {/* Heritage Family Rooms Hero Section */}
+      <section className="w-full flex flex-col-reverse lg:flex-row min-h-[90vh] bg-[#E9E8E1] border-b border-[#2c312a]/10">
+        {/* Content Area */}
+        <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 md:px-16 lg:px-[100px] xl:px-[120px] py-20 lg:py-0 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="max-w-[34rem] text-[#2c312a]"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-8 h-[1px] bg-[#5a5a52]/40"></div>
+              <p className="text-[10px] md:text-[11px] tracking-[0.2em] font-medium uppercase text-[#5a5a52]">
+                Heritage Family Rooms
+              </p>
+            </div>
+
+            <h2 className="font-heading text-[3.2rem] md:text-[4rem] lg:text-[4.5rem] xl:text-[5rem] leading-[1.05] mb-8 font-normal text-[#2c312a]">
+              Crafted for<br />connection<br />and comfort.
+            </h2>
+
+            <div className="w-full max-w-[24rem] h-[1px] bg-[#2c312a]/20 mb-8 md:mb-10"></div>
+
+            <p className="font-heading text-[1.05rem] md:text-[1.15rem] leading-[1.8] mb-10 md:mb-12 opacity-85 max-w-[26rem]">
+              Spacious and grounded in tradition, the Heritage Family Rooms offer a warm, communal space designed for families to unwind, reconnect, and experience the stillness of the Western Ghats together.
+            </p>
+
+            <button className="group text-[10px] md:text-[11px] tracking-[0.15em] font-medium uppercase hover:text-[#5a5a52] transition-colors flex items-center gap-4 pb-2 border-b border-[#2c312a]/30 w-fit">
+              EXPLORE THE FAMILY ROOMS
+              <ArrowRight size={14} strokeWidth={1} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </motion.div>
+        </div>
+
+        {/* Image Area */}
+        <div className="w-full lg:w-1/2 h-[60vh] lg:h-auto relative">
+          <img
+            src="/images/family_rooms_opt.jpg"
+            alt="Heritage Family Rooms"
+            className="absolute inset-0 w-full h-full object-cover object-[center_center]"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </section>
+
+      {/* Heritage Family Rooms Details Section */}
+      <section className="w-full flex flex-col md:flex-row items-stretch min-h-[40vh] md:min-h-[45vh] lg:min-h-[50vh] bg-[#E9E8E1]">
+        {/* Left Image */}
+        <div className="w-full md:w-[50%] lg:w-[42%] h-[50vh] md:h-auto relative">
+          <img
+            src={page5cWonder}
+            alt="Heritage Family Rooms Night View"
+            className="absolute inset-0 w-full h-full object-cover object-[center_center]"
+          />
+        </div>
+
+        {/* Content - Right aligned */}
+        <div className="w-full md:w-[50%] lg:flex-1 flex justify-center md:justify-end items-center px-8 py-16 md:py-20 md:px-16 lg:pr-[120px] xl:pr-[160px]">
+          <div className="w-full md:max-w-[20rem] flex flex-col justify-center pl-6 md:pl-10 border-l border-[#2c312a]/30">
+            <h3 className="font-heading text-[1.5rem] md:text-[1.8rem] text-[#2c312a] mb-4">Night View</h3>
+            <p className="font-heading text-[1.1rem] md:text-[1.15rem] leading-[1.8] text-[#4a4a40] opacity-90">
+              As dusk falls, the family room<br className="hidden md:block" /> transforms into a warm, inviting<br className="hidden md:block" /> sanctuary beneath the stars.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Title Gap */}
+      <div className="w-full pt-32 pb-20 md:pt-48 md:pb-32 flex flex-col items-center justify-center text-center px-6 relative z-10 bg-[#E9E8E1]">
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.8 }}
+          className="text-[10px] md:text-[12px] tracking-[0.35em] font-medium uppercase mb-6 text-[#5a5a52] opacity-80"
+        >
+          The Sanctuaries
+        </motion.p>
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="font-heading text-[3.5rem] md:text-[5rem] lg:text-[6rem] text-[#2c312a] font-normal leading-[1.1] tracking-[-0.02em]"
+        >
+          Malanad House
+        </motion.h2>
+        <motion.div 
+          initial={{ height: 0 }}
+          whileInView={{ height: 100 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 1.2, delay: 0.4 }}
           className="w-[1px] bg-[#2c312a]/20 mt-16"
         ></motion.div>
@@ -320,36 +514,37 @@ export default function Stay() {
 
       {/* The Malnad House Section */}
       <section className="relative min-h-[100vh] w-full flex items-center overflow-hidden pt-12 md:pt-0 bg-[#E9E8E1]">
-        {/* Background Image - Right aligned, zoomed and shifted to crop baked-in mockup text & navbar */}
-        <div className="absolute inset-0 right-0 w-full md:w-[80%] lg:w-[75%] ml-auto z-0 overflow-hidden pointer-events-none">
+        {/* Background Image - Right aligned */}
+        <div className="absolute inset-0 right-0 w-full md:w-[85%] lg:w-[80%] ml-auto z-0 pointer-events-none">
           <img
-            src="/images/malnad.png.jpeg"
+            src={newImage}
             alt="The Malnad House"
-            className="absolute right-0 max-w-none object-cover object-[right_center]"
-            style={{
-              width: '140%',
-              height: '155%',
-              top: '-15%'
-            }}
+            className="w-full h-full object-cover object-right md:object-[60%_center]"
           />
         </div>
 
-        {/* Gradient Overlay to fade the left side smoothly into the image without muddy grey bands */}
-        <div className="absolute inset-0 z-[5] w-full bg-gradient-to-r from-[#E9E8E1] from-[25%] md:from-[30%] lg:from-[35%] to-[#E9E8E1]/0 to-[75%] md:to-[60%] lg:to-[55%]"></div>
+        {/* Mobile Gradient Overlay (Extended for text readability) */}
+        <div 
+          className="absolute inset-0 z-[5] w-full pointer-events-none md:hidden"
+          style={{ background: 'linear-gradient(to right, #E9E8E1 0%, #E9E8E1 45%, rgba(233, 232, 225, 0.85) 80%, rgba(233, 232, 225, 0) 100%)' }}
+        ></div>
+        
+        {/* Desktop Gradient Overlay */}
+        <div className="absolute inset-0 z-[5] w-full bg-gradient-to-r from-[#E9E8E1] from-[30%] lg:from-[35%] to-[#E9E8E1]/0 to-[60%] lg:to-[55%] hidden md:block"></div>
 
         {/* Content */}
         <div className="relative z-10 px-8 md:px-16 lg:px-[120px] w-full mx-auto flex flex-col justify-center min-h-[100vh] pt-[15vh] pb-16">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 1, ease: "easeOut" }}
             className="max-w-[34rem] text-[#2c312a]"
           >
             <div className="flex items-center gap-4 mb-8">
               <div className="w-8 h-[1px] bg-[#5a5a52]/40"></div>
               <p className="text-[10px] md:text-[11px] tracking-[0.2em] font-medium uppercase text-[#5a5a52]">
-                The Malnad House
+                The Malanad House
               </p>
             </div>
 

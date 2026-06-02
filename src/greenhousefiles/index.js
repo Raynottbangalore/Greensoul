@@ -18,3 +18,6 @@ export { default as diningImage } from "./dining_experience.png";
 export { default as dining1 } from "./dining_1.png";
 export { default as dining2 } from "./dining_2.png";
 export { default as dining3 } from "./dining_3.png";
+export { default as poolImage } from "./pool.png";
+export { default as eveningWalk2 } from "./Evening Walk 2-unblur-wonder-3.png";
+export { default as trekCheckDam2 } from "./Treck Check Dam 2-unblur-wonder-3.png";

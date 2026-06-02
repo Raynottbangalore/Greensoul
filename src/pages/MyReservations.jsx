@@ -89,9 +89,9 @@ export default function MyReservations() {
   }
 
   return (
-    <div className="w-full min-h-screen bg-[#E9E8E1] pt-32 pb-24 px-6 md:px-16 lg:px-[120px]">
+    <div className="w-full min-h-screen bg-[#E9E8E1] pt-40 md:pt-48 pb-24 px-6 md:px-16 lg:px-[120px]">
       <div className="max-w-4xl mx-auto">
-        <Link to="/" className="relative z-20 inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-medium text-[#5a5a52] hover:text-[#9C8A71] transition-colors mb-12">
+        <Link to="/" className="relative z-[40] inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-medium text-[#5a5a52] hover:text-[#9C8A71] transition-colors mb-12 pointer-events-auto cursor-pointer">
           <ArrowLeft size={14} />
           <span>Return Home</span>
         </Link>

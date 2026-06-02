@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
-import { X, Calendar, User, ChevronDown, ConciergeBell } from 'lucide-react';
+import { X, Calendar, User } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { Link, useLocation } from 'react-router-dom';
 import { auth } from '../firebase';
@@ -8,55 +8,12 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 import toast from 'react-hot-toast';
 
 export default function Navbar() {
-  const langMap = {
-    'AR': 'ar',
-    'EN': 'en',
-    'ES': 'es',
-    'FR': 'fr',
-    'HE': 'iw',
-    'IT': 'it',
-    'JP': 'ja',
-    'PT': 'pt',
-    'RU': 'ru',
-    'TR': 'tr',
-    'VN': 'vi',
-    'ZH': 'zh-CN'
-  };
-
-  const getInitialLang = () => {
-    const match = document.cookie.match(/googtrans=\/en\/([a-zA-Z-]+)/);
-    if (match && match[1]) {
-      const code = match[1];
-      const found = Object.entries(langMap).find(([key, val]) => val === code);
-      return found ? found[0] : 'EN';
-    }
-    return 'EN';
-  };
-
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [user, setUser] = useState(null);
-  const [selectedLang, setSelectedLang] = useState(getInitialLang());
-  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   
-  const languages = Object.keys(langMap);
-
   const location = useLocation();
   const { scrollY } = useScroll();
-
-  const handleLanguageChange = (lang) => {
-    setSelectedLang(lang);
-    setLangDropdownOpen(false);
-    
-    if (lang === 'EN') {
-      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname};`;
-    } else {
-      document.cookie = `googtrans=/en/${langMap[lang]}; path=/`;
-    }
-    
-    window.location.reload();
-  };
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 50);
@@ -70,19 +27,24 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { name: 'Home', path: '/' },
     { name: 'Stay', path: '/stay' },
     { name: 'Dining', path: '/dining' },
     { name: 'Experiences', path: '/experiences' },
     { name: 'Our Story', path: '/our-story' },
-    { name: 'Gallery', path: '/gallery' }
+    { name: 'Contact', path: '/contact' }
   ];
 
   // Determine if the current page has a dark background at the top, requiring light text initially
-  const isDarkNav = !['/login', '/book', '/gallery', '/my-reservations'].includes(location.pathname);
+  const lightPaths = ['/login', '/book', '/gallery', '/my-reservations', '/our-story', '/experiences'];
+  const isDarkNav = !lightPaths.some(path => location.pathname === path || location.pathname.startsWith(path + '/'));
+  const isSolidNav = location.pathname === '/our-story' || location.pathname.startsWith('/our-story/');
 
   // Text color logic for navbar
   let textColorClass = "text-[#2c312a]";
-  if (isDarkNav && !scrolled) {
+  if (isSolidNav) {
+    textColorClass = "!text-[#F3E9DC]";
+  } else if (isDarkNav && !scrolled) {
     textColorClass = "text-[#E5E1D6]";
   } else if (location.pathname === '/' && !scrolled) {
     textColorClass = "text-[#E5E1D6]";
@@ -97,70 +59,15 @@ export default function Navbar() {
         className={cn(
           'fixed top-0 w-full z-50 transition-all duration-700 ease-in-out px-4 md:px-12 flex justify-between items-center',
           textColorClass,
-          scrolled 
-            ? 'bg-[#F0EFEA]/95 backdrop-blur-md py-4 shadow-sm !text-[#2c312a]' 
+          (scrolled || isSolidNav)
+            ? 'bg-[#0B120C] py-4 shadow-sm !text-[#F3E9DC]' 
             : (isDarkNav || location.pathname === '/' 
-                ? 'bg-gradient-to-b from-black/50 via-black/10 to-transparent py-6 md:py-8 shadow-none' 
-                : 'bg-transparent py-6 md:py-8')
+                ? 'bg-gradient-to-b from-black/50 via-black/10 to-transparent py-8 shadow-none' 
+                : 'bg-transparent py-8')
         )}
       >
-        {/* Left: Hamburger & Language */}
-        <div className="flex-1 flex items-center justify-start gap-4 md:gap-6">
-          <button
-            className="flex flex-col space-y-[6px] w-6 md:w-[30px] hover:opacity-70 py-2 z-50 transition-opacity items-start"
-            onClick={() => setSidebarOpen(true)}
-          >
-            <span className="w-full h-[1.5px] bg-current transition-all duration-300 drop-shadow-sm"></span>
-            <span className="w-[60%] h-[1.5px] bg-current transition-all duration-300 drop-shadow-sm"></span>
-            <span className="w-full h-[1.5px] bg-current transition-all duration-300 drop-shadow-sm"></span>
-          </button>
-          
-          <div className="hidden md:flex relative z-[100]">
-            {langDropdownOpen && (
-              <div 
-                className="fixed inset-0 z-[-1]" 
-                onClick={() => setLangDropdownOpen(false)}
-              />
-            )}
-            <button 
-              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-              className="flex items-center gap-1 hover:opacity-70 cursor-pointer text-[10px] tracking-[0.2em] font-medium uppercase transition-opacity drop-shadow-sm"
-            >
-              <ChevronDown size={12} strokeWidth={2} className={cn("transition-transform duration-300", langDropdownOpen && "rotate-180")} />
-              <span>{selectedLang}</span>
-            </button>
-            
-            <AnimatePresence>
-              {langDropdownOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 5 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 mt-3 bg-white border border-gray-100 shadow-xl py-0 min-w-[50px] flex flex-col items-center"
-                >
-                  {languages.map((lang) => (
-                    <button
-                      key={lang}
-                      onClick={() => handleLanguageChange(lang)}
-                      className={cn(
-                        "w-full px-3 py-2 text-[10px] font-sans transition-colors outline-none",
-                        selectedLang === lang 
-                          ? "bg-[#1d70b8] text-white" 
-                          : "text-gray-800 hover:bg-gray-100"
-                      )}
-                    >
-                      {lang}
-                    </button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-
-        {/* Center: Logo */}
-        <div className="flex-shrink-0 flex justify-center">
+        {/* Left: Logo */}
+        <div className="flex-shrink-0 flex items-center">
           <Link to="/" className="flex flex-col items-center group">
             <svg className="w-[28px] h-[28px] md:w-[32px] md:h-[32px] mb-2 group-hover:opacity-70 transition-opacity drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 22V2" />
@@ -181,50 +88,36 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Right: Actions (Pill Buttons) */}
-        <div className="flex-1 flex justify-end items-center space-x-2 md:space-x-6">
-          {user ? (
-            <button 
-              onClick={() => {
-                signOut(auth);
-                toast.success('Successfully signed out!');
-              }}
-              className="hidden lg:flex items-center justify-between pl-5 pr-1 py-1 border-[1px] border-current rounded-full text-[9px] md:text-[10px] tracking-[0.15em] uppercase font-medium transition-all duration-300 group hover:opacity-70"
+        {/* Center: Links (Desktop) */}
+        <div className="hidden lg:flex items-center space-x-8 lg:space-x-12 absolute left-1/2 -translate-x-1/2">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className="text-[10px] tracking-[0.2em] uppercase font-medium hover:opacity-70 transition-opacity drop-shadow-sm"
             >
-              <span className="mr-3">Sign Out</span>
-              <div className={cn(
-                "w-[26px] h-[26px] md:w-[30px] md:h-[30px] rounded-full flex items-center justify-center transition-colors",
-                textColorClass.includes('E5E1D6') ? "bg-white text-[#2c312a]" : "bg-[#2c312a] text-[#E5E1D6]"
-              )}>
-                <User size={14} strokeWidth={1.5} />
-              </div>
-            </button>
-          ) : (
-            <Link 
-              to="/login"
-              className="hidden lg:flex items-center justify-between pl-5 pr-1 py-1 border-[1px] border-current rounded-full text-[9px] md:text-[10px] tracking-[0.15em] uppercase font-medium transition-all duration-300 group hover:opacity-70"
-            >
-              <span className="mr-3">Login</span>
-              <div className={cn(
-                "w-[26px] h-[26px] md:w-[30px] md:h-[30px] rounded-full flex items-center justify-center transition-colors",
-                textColorClass.includes('E5E1D6') ? "bg-white text-[#2c312a]" : "bg-[#2c312a] text-[#E5E1D6]"
-              )}>
-                <User size={14} strokeWidth={1.5} />
-              </div>
+              {link.name}
             </Link>
-          )}
+          ))}
+        </div>
 
+        {/* Right: Book Button & Hamburger */}
+        <div className="flex items-center space-x-6 md:space-x-8">
           <Link 
             to="/book"
-            className={cn(
-              "flex items-center gap-2 md:gap-3 px-3 md:px-5 pr-2 md:pr-4 py-2 md:py-2.5 rounded-full text-[9px] md:text-[10px] tracking-[0.15em] uppercase font-medium transition-all duration-300 shadow-sm",
-              "bg-white text-[#2c312a] hover:bg-[#F0EFEA]"
-            )}
+            className="hidden md:flex items-center justify-center px-6 py-2.5 border border-current text-[10px] tracking-[0.2em] uppercase font-medium hover:bg-white hover:text-[#0B120C] transition-all duration-300 drop-shadow-sm"
           >
-            <span className="hidden sm:inline">Book Now</span>
-            <span className="sm:hidden">Book</span>
-            <ConciergeBell size={16} strokeWidth={1.5} className="md:w-[18px] md:h-[18px]" />
+            Book Your Escape
           </Link>
+
+          <button
+            className="flex flex-col justify-between w-[22px] h-[12px] md:w-[28px] md:h-[14px] hover:opacity-70 z-50 transition-opacity cursor-pointer"
+            onClick={() => setSidebarOpen(true)}
+          >
+            <span className="w-full h-[1px] bg-current transition-all duration-300"></span>
+            <span className="w-full h-[1px] bg-current transition-all duration-300"></span>
+            <span className="w-full h-[1px] bg-current transition-all duration-300"></span>
+          </button>
         </div>
       </motion.nav>
 
@@ -255,7 +148,7 @@ export default function Navbar() {
                 <X size={28} strokeWidth={1} />
               </button>
               
-              <div className="flex flex-col space-y-6 mt-8 flex-1">
+              <div className="flex flex-col space-y-6 mt-8 flex-1 lg:hidden">
                 {navLinks.map((link, i) => (
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -278,7 +171,7 @@ export default function Navbar() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="mt-12 pt-8 border-t border-[#2c312a]/10"
+                className="mt-12 pt-8 border-t border-[#2c312a]/10 lg:mt-8 lg:pt-0 lg:border-none"
               >
                 {/* Mobile Authentication Links */}
                 {user ? (
@@ -296,7 +189,7 @@ export default function Navbar() {
                 ) : (
                   <Link 
                     to="/login"
-                    className="lg:hidden flex items-center gap-4 text-[10px] tracking-[0.2em] uppercase font-medium text-[#2c312a] hover:text-[#9C8A71] transition-colors mb-6"
+                    className="flex items-center gap-4 text-[10px] tracking-[0.2em] uppercase font-medium text-[#2c312a] hover:text-[#9C8A71] transition-colors mb-6"
                     onClick={() => setSidebarOpen(false)}
                   >
                     <User size={16} strokeWidth={1} />

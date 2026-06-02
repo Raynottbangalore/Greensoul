@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { page3 } from '../greenhousefiles';
 
 export default function Contact() {
   const containerRef = useRef(null);
@@ -22,11 +23,10 @@ export default function Contact() {
             initial={{ scale: 1.15 }}
             animate={{ scale: 1 }}
             transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
-            src="/images/gallery_resort_1780050156435.png" 
+            src={page3} 
             alt="Misty landscape" 
-            className="w-full h-full object-cover opacity-80"
+            className="w-full h-full object-cover object-bottom"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#E5E1D6] via-black/20 to-transparent"></div>
         </motion.div>
 
         <motion.div 
@@ -41,7 +41,7 @@ export default function Contact() {
             <p className="text-[10px] md:text-[11px] tracking-[0.4em] uppercase font-medium mb-8 text-[#9C8A71]">
               Connect With Us
             </p>
-            <h1 className="font-heading text-6xl md:text-8xl lg:text-[9rem] font-light leading-[0.9] tracking-[-0.03em] mb-4 text-[#2c312a]">
+            <h1 className="font-heading text-6xl md:text-8xl lg:text-[9rem] font-light leading-[0.9] tracking-[-0.03em] mb-4 text-[#E5E1D6]">
               Begin your <span className="font-serif italic font-light text-[#9C8A71]">journey.</span>
             </h1>
           </motion.div>
