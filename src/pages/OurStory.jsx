@@ -1,4 +1,5 @@
 import React from 'react';
+import LazyImage from '../components/LazyImage';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -65,7 +66,7 @@ export default function OurStory() {
 
         {/* Image Area */}
         <div className="w-full lg:w-1/2 h-[60vh] lg:h-auto relative overflow-hidden lg:absolute lg:top-0 lg:right-0 lg:bottom-0">
-          <motion.img 
+          <LazyImage 
             initial={{ scale: 1.05 }}
             animate={{ scale: 1 }}
             transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
@@ -82,7 +83,7 @@ export default function OurStory() {
           transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="hidden lg:block absolute bottom-8 right-[42%] xl:right-[45%] w-[22vw] max-w-[280px] aspect-[4/5] border-[3px] border-white z-20 shadow-2xl"
         >
-          <img 
+          <LazyImage 
             src="/images/client_full_story.jpg" 
             alt="Vintage details" 
             className="w-full h-full object-cover"

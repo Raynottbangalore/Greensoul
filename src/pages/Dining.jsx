@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import LazyImage from '../components/LazyImage';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -19,7 +20,7 @@ export default function Dining() {
       {/* SECTION 1: Luxury Dining Hero */}
       <section className="relative w-full h-[100vh] overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-full z-0">
-          <motion.img 
+          <LazyImage 
             initial={{ scale: 1.15 }}
             animate={{ scale: 1 }}
             transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
@@ -95,7 +96,7 @@ export default function Dining() {
             className="lg:col-span-6 lg:col-start-7 relative"
           >
             <div className="aspect-[4/5] overflow-hidden group shadow-2xl">
-              <motion.img 
+              <LazyImage 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                 src="/images/dining/dining_philosophy_1780129457876.png" 
@@ -137,7 +138,7 @@ export default function Dining() {
             className="w-full lg:w-1/2"
           >
             <div className="aspect-[16/10] lg:aspect-square overflow-hidden group shadow-2xl">
-              <motion.img 
+              <LazyImage 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                 src="/images/dining/dining_farm_1780129475447.png" 
@@ -171,7 +172,7 @@ export default function Dining() {
             className="flex flex-col group cursor-pointer"
           >
             <div className="aspect-[3/4] overflow-hidden mb-10 shadow-xl relative">
-              <motion.img 
+              <LazyImage 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                 src="/images/dining/dining_signature_one_1780129489665.png" 
@@ -196,7 +197,7 @@ export default function Dining() {
             className="flex flex-col group cursor-pointer md:mt-32 lg:mt-48"
           >
             <div className="aspect-[4/5] overflow-hidden mb-10 shadow-xl relative">
-              <motion.img 
+              <LazyImage 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                 src="/images/dining/dining_signature_two_1780129506991.png" 
@@ -224,7 +225,7 @@ export default function Dining() {
           transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0 w-full h-full z-0"
         >
-          <img 
+          <LazyImage 
             src="/images/dining/dining_ambience_1780129526759.png" 
             alt="Atmosphere and ambience" 
             className="w-full h-full object-cover"
@@ -268,7 +269,7 @@ export default function Dining() {
             className="lg:col-span-7 lg:pr-20 order-2 lg:order-1"
           >
             <div className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden group shadow-2xl">
-              <motion.img 
+              <LazyImage 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                 src="/images/dining/dining_chef_1780129546289.png" 
@@ -309,7 +310,7 @@ export default function Dining() {
           transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0 w-full h-full z-0"
         >
-          <img 
+          <LazyImage 
             src="/images/dining/dining_closing_1780129571682.png" 
             alt="Dining closing view" 
             className="w-full h-full object-cover opacity-60"

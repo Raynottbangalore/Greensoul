@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import LazyImage from '../components/LazyImage';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import {
@@ -92,7 +93,7 @@ export default function Experiences() {
             transition={{ duration: 1, delay: 0 }}
             className="w-full aspect-[4/5] lg:aspect-square overflow-hidden"
           >
-            <img 
+            <LazyImage 
               src={cycleWonder} 
               alt="Cycling through the estate" 
               className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-[2s] ease-in-out"
@@ -109,7 +110,7 @@ export default function Experiences() {
             transition={{ duration: 1, delay: 0.15 }}
             className="w-full aspect-[4/5] lg:aspect-square overflow-hidden"
           >
-            <img 
+            <LazyImage 
               src={trekWonder} 
               alt="Trekking through the misty hills" 
               className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-[2s] ease-in-out"
@@ -126,7 +127,7 @@ export default function Experiences() {
             transition={{ duration: 1, delay: 0.3 }}
             className="w-full aspect-[4/5] lg:aspect-square overflow-hidden"
           >
-            <img 
+            <LazyImage 
               src={eveningWalk2} 
               alt="Quiet forest paths" 
               className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-[2s] ease-in-out"
@@ -189,7 +190,7 @@ export default function Experiences() {
               className="lg:col-span-8 group cursor-pointer"
             >
               <div className="w-full aspect-[16/10] overflow-hidden mb-6">
-                <img 
+                <LazyImage 
                   src={trekCheckDam2} 
                   alt="Trek to Check Dam" 
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[2s] ease-in-out"
@@ -211,7 +212,7 @@ export default function Experiences() {
               className="lg:col-span-4 group cursor-pointer flex flex-col justify-end"
             >
               <div className="w-full aspect-[4/5] overflow-hidden mb-6">
-                <img 
+                <LazyImage 
                   src={page5d} 
                   alt="Plantation Walk" 
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[2s] ease-in-out"
@@ -233,7 +234,7 @@ export default function Experiences() {
               className="lg:col-span-12 group cursor-pointer mt-8 lg:mt-12"
             >
               <div className="w-full aspect-[21/9] md:aspect-[2.5/1] overflow-hidden mb-6">
-                <img 
+                <LazyImage 
                   src={poolImage} 
                   alt="Forest Pool" 
                   className="w-full h-full object-cover object-bottom transform group-hover:scale-105 transition-transform duration-[2s] ease-in-out"

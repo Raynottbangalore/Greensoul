@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { page3 } from '../greenhousefiles';
 import { Link } from 'react-router-dom';
+import LazyImage from '../components/LazyImage';
 
 export default function Stay() {
   return (
@@ -11,10 +12,11 @@ export default function Stay() {
       <section className="relative min-h-[100vh] md:min-h-[125vh] lg:min-h-[140vh] w-full flex items-center bg-[#0B120C] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img
+          <LazyImage
             src={page3}
             alt="Stay Landscape"
             className="absolute inset-0 w-full h-full object-cover object-[center_60%]"
+            priority={true}
           />
           {/* Gradients for text legibility and blending */}
           {/* Mobile Mist */}

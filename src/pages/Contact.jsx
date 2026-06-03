@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import LazyImage from '../components/LazyImage';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { page3 } from '../greenhousefiles';
@@ -19,7 +20,7 @@ export default function Contact() {
       {/* Cinematic Hero Section */}
       <section className="relative w-full h-[85vh] overflow-hidden bg-[#2c312a]">
         <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-full">
-          <motion.img 
+          <LazyImage 
             initial={{ scale: 1.15 }}
             animate={{ scale: 1 }}
             transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}

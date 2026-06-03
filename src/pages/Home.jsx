@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import LazyImage from '../components/LazyImage';
 import { motion, useScroll } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -130,12 +131,12 @@ export default function Home() {
         <div className="mb-32 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1 }} className="flex flex-col gap-8">
                 <div className="aspect-[4/5] overflow-hidden">
-                    <img src="/images/Mist Valley Cottages.png" alt="Mist Valley Cottage" className="w-full h-full object-cover" />
+                    <LazyImage src="/images/Mist Valley Cottages.png" alt="Mist Valley Cottage" className="w-full h-full object-cover" />
                 </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1 }} className="flex flex-col">
                 <div className="aspect-[16/10] overflow-hidden mb-12">
-                    <img src={page4} alt="Mist Valley Views" className="w-full h-full object-cover" />
+                    <LazyImage src={page4} alt="Mist Valley Views" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-heading text-4xl mb-4 text-[#F3E9DC] tracking-tight">Mist Valley Cottages</h3>
                 <p className="text-[15px] leading-[2] text-[#A3A19B] font-light max-w-md">Elevated amongst ancient trees, providing undisturbed views of the rolling mists and vibrant rainforest life.</p>
@@ -148,12 +149,12 @@ export default function Home() {
                 <h3 className="font-heading text-4xl mb-4 text-[#F3E9DC] tracking-tight">Heritage Villa</h3>
                 <p className="text-[15px] leading-[2] text-[#A3A19B] font-light max-w-md mb-12">Crafted from earth and reclaimed timber, offering spacious living with interiors that breathe naturally.</p>
                 <div className="aspect-[16/10] overflow-hidden">
-                    <img src="/images/earth_heritage_opt.jpg" alt="Heritage Villa Exterior" className="w-full h-full object-cover" />
+                    <LazyImage src="/images/earth_heritage_opt.jpg" alt="Heritage Villa Exterior" className="w-full h-full object-cover" />
                 </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1 }} className="order-1 lg:order-2 flex flex-col gap-8">
                 <div className="aspect-[4/5] overflow-hidden">
-                    <img src={page5cWonder} alt="Heritage Villa Interior" className="w-full h-full object-cover" />
+                    <LazyImage src={page5cWonder} alt="Heritage Villa Interior" className="w-full h-full object-cover" />
                 </div>
             </motion.div>
         </div>
@@ -162,12 +163,12 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1 }} className="flex flex-col gap-8">
                 <div className="aspect-[4/5] overflow-hidden">
-                    <img src={newImage} alt="The Malnad Collective Detail" className="w-full h-full object-cover" />
+                    <LazyImage src={newImage} alt="The Malnad Collective Detail" className="w-full h-full object-cover" />
                 </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1 }} className="flex flex-col">
                 <div className="aspect-[4/3] overflow-hidden mb-12">
-                    <img src={malnadSecond} alt="The Malnad Collective" className="w-full h-full object-cover" />
+                    <LazyImage src={malnadSecond} alt="The Malnad Collective" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-heading text-4xl mb-4 text-[#F3E9DC] tracking-tight">The Malnad Collective</h3>
                 <p className="text-[15px] leading-[2] text-[#A3A19B] font-light max-w-md">Designed for shared living with sweeping verandahs right next to the deep rainforest edge.</p>
@@ -198,12 +199,12 @@ export default function Home() {
             
             <div className="grid grid-cols-2 gap-6">
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1 }} className="flex flex-col gap-6 translate-y-12">
-                    <img src={diningImage} alt="Dining Atmosphere" className="w-full aspect-[4/5] object-cover" />
-                    <img src={dining2} alt="Dining Experience" className="w-full aspect-square object-cover" />
+                    <LazyImage src={diningImage} alt="Dining Atmosphere" className="w-full aspect-[4/5] object-cover" />
+                    <LazyImage src={dining2} alt="Dining Experience" className="w-full aspect-square object-cover" />
                 </motion.div>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.2 }} className="flex flex-col gap-6">
-                    <img src={dining1} alt="Cuisine Detail" className="w-full aspect-square object-cover" />
-                    <img src={dining3} alt="Cuisine Close-up" className="w-full aspect-[4/5] object-cover" />
+                    <LazyImage src={dining1} alt="Cuisine Detail" className="w-full aspect-square object-cover" />
+                    <LazyImage src={dining3} alt="Cuisine Close-up" className="w-full aspect-[4/5] object-cover" />
                 </motion.div>
             </div>
           </div>
@@ -227,14 +228,14 @@ export default function Home() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="lg:col-span-8 aspect-[16/9] lg:aspect-auto">
-                <img src={poolImage} alt="Luxury Swimming Pool" className="w-full h-full object-cover" />
+                <LazyImage src={poolImage} alt="Luxury Swimming Pool" className="w-full h-full object-cover" />
             </motion.div>
             <div className="lg:col-span-4 flex flex-col gap-8">
                 <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1 }} className="aspect-square">
-                    <img src={page1} alt="Rainforest Pond" className="w-full h-full object-cover" />
+                    <LazyImage src={page1} alt="Rainforest Pond" className="w-full h-full object-cover" />
                 </motion.div>
                 <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.2 }} className="aspect-square">
-                    <img src={cycleWonder} alt="Rolling Hills Landscape" className="w-full h-full object-cover" />
+                    <LazyImage src={cycleWonder} alt="Rolling Hills Landscape" className="w-full h-full object-cover" />
                 </motion.div>
             </div>
           </div>
@@ -257,19 +258,19 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1 }} className="flex flex-col gap-6 lg:mt-12">
-                <img src={page5b} alt="Tea Moments" className="w-full aspect-[4/5] object-cover" />
+                <LazyImage src={page5b} alt="Tea Moments" className="w-full aspect-[4/5] object-cover" />
                 <p className="text-[#A3A19B] font-light text-[14px]">Morning tea amidst the mist</p>
              </motion.div>
              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.1 }} className="flex flex-col gap-6">
-                <img src={page1} alt="Rainfall" className="w-full aspect-[3/4] object-cover" />
+                <LazyImage src={page1} alt="Rainfall" className="w-full aspect-[3/4] object-cover" />
                 <p className="text-[#A3A19B] font-light text-[14px]">Monsoon immersion & rainfall</p>
              </motion.div>
              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.2 }} className="flex flex-col gap-6 lg:mt-24">
-                <img src={page5e} alt="Slow Living" className="w-full aspect-square object-cover object-right" />
+                <LazyImage src={page5e} alt="Slow Living" className="w-full aspect-square object-cover object-right" />
                 <p className="text-[#A3A19B] font-light text-[14px]">Family moments & slow living</p>
              </motion.div>
              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.3 }} className="flex flex-col gap-6 lg:mt-8">
-                <img src={page5d} alt="Architecture Details" className="w-full aspect-[4/5] object-cover" />
+                <LazyImage src={page5d} alt="Architecture Details" className="w-full aspect-[4/5] object-cover" />
                 <p className="text-[#A3A19B] font-light text-[14px]">Nature-integrated architecture</p>
              </motion.div>
           </div>
@@ -282,10 +283,10 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1 }}>
                 <div className="grid grid-cols-2 gap-4">
-                    <img src={eveningWalk} alt="Forest Walks" className="w-full aspect-[4/5] object-cover translate-y-8" />
-                    <img src={page5cWonder} alt="Stargazing" className="w-full aspect-[3/4] object-cover" />
-                    <img src={trekWonder} alt="Plantation Experiences" className="w-full aspect-square object-cover translate-y-8" />
-                    <img src={page1} alt="Monsoon Immersion" className="w-full aspect-square object-cover" />
+                    <LazyImage src={eveningWalk} alt="Forest Walks" className="w-full aspect-[4/5] object-cover translate-y-8" />
+                    <LazyImage src={page5cWonder} alt="Stargazing" className="w-full aspect-[3/4] object-cover" />
+                    <LazyImage src={trekWonder} alt="Plantation Experiences" className="w-full aspect-square object-cover translate-y-8" />
+                    <LazyImage src={page1} alt="Monsoon Immersion" className="w-full aspect-square object-cover" />
                 </div>
             </motion.div>
 

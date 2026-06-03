@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import LazyImage from '../components/LazyImage';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { doc, setDoc, collection } from 'firebase/firestore';
@@ -58,7 +59,7 @@ export default function Book() {
       {/* LEFT SIDE - Cinematic Image */}
       <div className="w-full lg:w-[40%] h-[50vh] lg:h-auto relative border-r border-[#2c312a]/10">
         <div className="absolute inset-0 bg-black/10 z-10"></div>
-        <img 
+        <LazyImage 
           src={trekWonder} 
           alt="Luxury Rainforest Retreat" 
           className="absolute inset-0 w-full h-full object-cover"

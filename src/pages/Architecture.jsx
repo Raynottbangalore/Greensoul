@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import LazyImage from '../components/LazyImage';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -18,7 +19,7 @@ export default function Architecture() {
       {/* Cinematic Hero Section */}
       <section className="relative w-full h-[110vh] overflow-hidden bg-[#2c312a]">
         <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-full">
-          <motion.img 
+          <LazyImage 
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
             transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
@@ -106,7 +107,7 @@ export default function Architecture() {
               className="lg:col-span-7 relative"
             >
               <div className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden">
-                <motion.img 
+                <LazyImage 
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                   src="/images/artisan_craftsmanship_1780050139159.png" 

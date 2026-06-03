@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import LazyImage from '../components/LazyImage';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { X, ArrowRight, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -321,11 +322,11 @@ export default function Gallery() {
                 className="lg:col-span-7 relative"
               >
                 <div className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden group shadow-2xl">
-                  <img src={earthHeritage1} alt="Earth Architecture" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out" />
+                  <LazyImage src={earthHeritage1} alt="Earth Architecture" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out" />
                 </div>
                 {/* Overlapping small image */}
                 <div className="hidden lg:block absolute -bottom-16 -left-20 w-64 aspect-[3/4] overflow-hidden shadow-2xl border-4 border-[#101912] z-20">
-                  <img src={page4} alt="Architecture Detail" className="w-full h-full object-cover" />
+                  <LazyImage src={page4} alt="Architecture Detail" className="w-full h-full object-cover" />
                 </div>
               </motion.div>
             </div>
@@ -340,7 +341,7 @@ export default function Gallery() {
                 className="lg:col-span-7 relative order-2 lg:order-1"
               >
                 <div className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden group shadow-2xl">
-                  <img src={trekWonder} alt="Rainforest Trekking" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out" />
+                  <LazyImage src={trekWonder} alt="Rainforest Trekking" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out" />
                 </div>
               </motion.div>
 
