@@ -14,7 +14,7 @@
 
 @layer base {
   body {
-    @apply bg-brand-green text-brand-white font-body font-light antialiased selection:bg-brand-gold/30 selection:text-brand-white;
+    @apply bg-[#F3EEE7] text-[#2c312a] font-body font-light antialiased selection:bg-[#8B7C6E] selection:text-[#F3EEE7];
   }
   
   h1, h2, h3, h4, h5, h6 {
