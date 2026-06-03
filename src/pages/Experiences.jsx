@@ -69,7 +69,10 @@ export default function Experiences() {
               Days unfold with the rhythm of the rainforest &mdash; misty mornings, unhurried walks, quiet conversations and starlit skies.<br />This is life, in its natural form.
             </p>
 
-            <button className="group text-[10px] md:text-[11px] tracking-[0.2em] font-medium uppercase text-[#5a5a52] hover:text-[#2c312a] transition-colors flex items-center gap-4 w-fit pb-1">
+            <button 
+              onClick={() => document.getElementById('explore-section')?.scrollIntoView({ behavior: 'smooth' })}
+              className="group text-[10px] md:text-[11px] tracking-[0.2em] font-medium uppercase text-[#5a5a52] hover:text-[#2c312a] transition-colors flex items-center gap-4 w-fit pb-1"
+            >
               DISCOVER LIFE AT GREENSOUL
               <ArrowRight size={14} strokeWidth={1} className="group-hover:translate-x-1 transition-transform" />
             </button>

@@ -20,10 +20,7 @@ export default function OurStory() {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="w-full text-[#2c312a]"
           >
-            <p className="text-[10px] md:text-[11px] tracking-[0.2em] font-medium uppercase text-[#8B7C6E] mb-6">
-              OUR STORY
-            </p>
-            <div className="w-12 h-[1px] bg-[#8B7C6E]/60 mb-12"></div>
+
 
             <h1 className="font-heading text-[3rem] md:text-[4rem] lg:text-[4.5rem] leading-[1.1] mb-12 font-normal text-[#2c312a]">
               Rooted in the wild.<br />Built for slow living.

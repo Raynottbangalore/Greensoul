@@ -12,6 +12,9 @@ import Login from './pages/Login';
 import Book from './pages/Book';
 import Gallery from './pages/Gallery';
 import MyReservations from './pages/MyReservations';
+import MistValleyCottage from './pages/MistValleyCottage';
+import EarthHeritage from './pages/EarthHeritage';
+import MalanadHouse from './pages/MalanadHouse';
 import { Toaster } from 'react-hot-toast';
 import { ErrorBoundary } from './ErrorBoundary';
 
@@ -62,6 +65,9 @@ function AppContent() {
             <Route path="/our-story" element={<OurStory />} />
             <Route path="/experiences" element={<Experiences />} />
             <Route path="/stay" element={<Stay />} />
+            <Route path="/mist-valley-cottage" element={<MistValleyCottage />} />
+            <Route path="/earth-heritage" element={<EarthHeritage />} />
+            <Route path="/malnad-house" element={<MalanadHouse />} />
             <Route path="/dining" element={<Dining />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />

@@ -38,50 +38,60 @@ export default function Home() {
   return (
     <div ref={containerRef} className="w-full bg-[#0B120C] text-[#E4E0D9] font-sans selection:bg-[#9C8A71] selection:text-[#0B120C]">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[100vh] w-full flex items-center bg-[#0B120C] overflow-hidden">
+      <section className="relative min-h-[100vh] md:min-h-[125vh] lg:min-h-[140vh] w-full flex items-center bg-[#0B120C] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src="/images/hero_landscape.jpg"
             alt="GreenSoul Landscape"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-[center_60%]"
           />
           {/* Gradients for text legibility and blending */}
-          <div className="absolute inset-0 bg-black/20 z-0"></div>
-          <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/60 to-transparent z-0"></div>
-          <div className="absolute inset-y-0 left-0 w-full md:w-2/3 lg:w-1/2 bg-gradient-to-r from-[#0B120C]/90 via-[#0B120C]/50 to-transparent z-0"></div>
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0B120C] to-transparent z-[50]"></div>
+          {/* Mobile Mist */}
+          <div 
+            className="absolute inset-0 z-0 w-full md:hidden"
+            style={{ background: 'linear-gradient(to bottom, rgba(233, 232, 225, 0.95) 0%, rgba(233, 232, 225, 0.9) 85%, rgba(233, 232, 225, 0) 100%)' }}
+          ></div>
+          
+          {/* Desktop Mist */}
+          <div 
+            className="absolute inset-y-0 left-0 w-full md:w-[60%] lg:w-[50%] xl:w-[45%] z-0 hidden md:block"
+            style={{ background: 'linear-gradient(to right, rgba(233, 232, 225, 0.9) 0%, rgba(233, 232, 225, 0.75) 40%, rgba(233, 232, 225, 0) 100%)' }}
+          ></div>
+          
+          {/* Top Gradient for Navbar (Subtle Dark to Light) to make navbar pop if needed, but since we want dark text, maybe we don't need it or use a light gradient */}
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#E9E8E1] via-[#E9E8E1]/80 to-transparent z-0"></div>
         </div>
         
         {/* Hero Content */}
-        <div className="relative z-10 w-full px-4 md:px-12 pt-24 flex flex-col items-center md:items-start text-center md:text-left">
+        <div className="relative z-10 w-full px-4 md:px-12 pt-32 md:pt-0 pb-12 flex flex-col items-center md:items-start text-center md:text-left">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2 }}
             className="max-w-2xl flex flex-col items-center md:items-start"
           >
-            <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#A3A19B] mb-6">
+            <p className="text-[10px] md:text-[11px] tracking-[0.25em] uppercase font-medium text-[#5a5a52] mb-6">
               Rooted in the wild. Made for slow living.
             </p>
             
-            <h1 className="font-heading text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight text-[#F3E9DC] mb-8">
+            <h1 className="font-heading text-[4rem] sm:text-[4.5rem] md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight text-[#2c312a] mb-8 font-normal">
               Earthy Luxury<br/>
               Inside a Living<br/>
               Rainforest
             </h1>
 
-            <div className="w-12 h-[1px] bg-[#A3A19B]/40 mb-8 mx-auto md:mx-0"></div>
+            <div className="w-12 h-[1px] bg-[#2c312a]/30 mb-8 mx-auto md:mx-0"></div>
             
-            <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#A3A19B] mb-6">
+            <p className="text-[10px] md:text-[11px] tracking-[0.25em] uppercase font-medium text-[#5a5a52] mb-6">
               Luxury in its natural form
             </p>
             
-            <p className="text-[15px] leading-[2] font-light text-[#E4E0D9] max-w-md mb-12">
+            <p className="font-body text-[15px] md:text-[1.05rem] leading-[1.9] font-light text-[#4a4a40] max-w-md mb-12">
               Hidden within the rainforests of the Western Ghats, GreenSoul is a consciously crafted retreat shaped by earth, mist, monsoon, and silence.
             </p>
 
-            <Link to="/our-story" className="inline-flex items-center gap-4 px-8 py-4 border border-[#A3A19B]/40 text-[10px] tracking-[0.2em] uppercase font-medium text-[#F3E9DC] hover:bg-[#F3E9DC] hover:text-[#0B120C] transition-all duration-500 w-fit group">
+            <Link to="/stay" className="inline-flex items-center gap-4 px-8 py-4 border border-[#2c312a]/30 text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-medium text-[#2c312a] hover:bg-[#2c312a] hover:text-[#E9E8E1] transition-all duration-500 w-fit group">
               Discover GreenSoul
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -90,10 +100,10 @@ export default function Home() {
 
         {/* Scroll Indicator */}
         <div 
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center text-white cursor-pointer z-[60] animate-bounce-slow" 
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center text-[#F3E9DC] cursor-pointer z-[60] animate-bounce-slow" 
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
         >
-          <span className="text-[10px] tracking-[0.3em] uppercase font-medium mb-3 opacity-90 drop-shadow-md">Scroll to explore</span>
+          <span className="text-[10px] tracking-[0.25em] uppercase font-medium mb-3 opacity-90 drop-shadow-md">Scroll to explore</span>
           <ChevronDown size={20} strokeWidth={1.5} className="opacity-90 drop-shadow-md" />
         </div>
       </section>

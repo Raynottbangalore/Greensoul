@@ -36,7 +36,7 @@ export default function Navbar() {
   ];
 
   // Determine if the current page has a dark background at the top, requiring light text initially
-  const lightPaths = ['/login', '/book', '/gallery', '/my-reservations', '/our-story', '/experiences'];
+  const lightPaths = ['/', '/stay', '/login', '/book', '/gallery', '/my-reservations', '/our-story', '/experiences', '/mist-valley-cottage', '/earth-heritage', '/malnad-house'];
   const isDarkNav = !lightPaths.some(path => location.pathname === path || location.pathname.startsWith(path + '/'));
   const isSolidNav = location.pathname === '/our-story' || location.pathname.startsWith('/our-story/');
 
@@ -45,8 +45,6 @@ export default function Navbar() {
   if (isSolidNav) {
     textColorClass = "!text-[#F3E9DC]";
   } else if (isDarkNav && !scrolled) {
-    textColorClass = "text-[#E5E1D6]";
-  } else if (location.pathname === '/' && !scrolled) {
     textColorClass = "text-[#E5E1D6]";
   }
 
@@ -68,7 +66,13 @@ export default function Navbar() {
       >
         {/* Left: Logo */}
         <div className="flex-shrink-0 flex items-center">
-          <Link to="/" className="flex flex-col items-center group">
+          <Link 
+            to="/" 
+            className={cn(
+              "flex flex-col items-center group",
+              (location.pathname === '/contact' && !scrolled) ? "!text-[#2c312a]" : ""
+            )}
+          >
             <svg className="w-[28px] h-[28px] md:w-[32px] md:h-[32px] mb-2 group-hover:opacity-70 transition-opacity drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 22V2" />
               <path d="M12 11C9.5 8 12 2 12 2C12 2 14.5 8 12 11Z" />
