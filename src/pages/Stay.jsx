@@ -7,9 +7,9 @@ import LazyImage from '../components/LazyImage';
 
 export default function Stay() {
   return (
-    <div id="stay" className="w-full bg-[#E9E8E1]">
+    <div id="stay" className="w-full bg-[#F3EEE7]">
       {/* STAY PAGE HERO SECTION */}
-      <section className="relative min-h-[100vh] md:min-h-[125vh] lg:min-h-[140vh] w-full flex items-center bg-[#0B120C] overflow-hidden">
+      <section className="relative min-h-[100vh] md:min-h-[125vh] lg:min-h-[140vh] w-full flex items-center bg-[#F3EEE7] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <LazyImage
@@ -22,17 +22,17 @@ export default function Stay() {
           {/* Mobile Mist */}
           <div 
             className="absolute inset-0 z-0 w-full md:hidden"
-            style={{ background: 'linear-gradient(to bottom, rgba(233, 232, 225, 0.95) 0%, rgba(233, 232, 225, 0.9) 85%, rgba(233, 232, 225, 0) 100%)' }}
+            style={{ background: 'linear-gradient(to bottom, rgba(243, 238, 231, 0.95) 0%, rgba(243, 238, 231, 0.9) 85%, rgba(243, 238, 231, 0) 100%)' }}
           ></div>
           
           {/* Desktop Mist */}
           <div 
             className="absolute inset-y-0 left-0 w-full md:w-[60%] lg:w-[50%] xl:w-[45%] z-0 hidden md:block"
-            style={{ background: 'linear-gradient(to right, rgba(233, 232, 225, 0.9) 0%, rgba(233, 232, 225, 0.75) 40%, rgba(233, 232, 225, 0) 100%)' }}
+            style={{ background: 'linear-gradient(to right, rgba(243, 238, 231, 0.9) 0%, rgba(243, 238, 231, 0.75) 40%, rgba(243, 238, 231, 0) 100%)' }}
           ></div>
           
           {/* Top Gradient for Navbar */}
-          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#E9E8E1] via-[#E9E8E1]/80 to-transparent z-0"></div>
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#F3EEE7] via-[#F3EEE7]/80 to-transparent z-0"></div>
         </div>
         
         {/* Hero Content */}
@@ -62,7 +62,7 @@ export default function Stay() {
               Each dwelling has been consciously positioned within the shifting moods of mist, monsoon, forest, and valley — where silence, changing light, and the rhythms of the Western Ghats become part of everyday living.
             </p>
 
-            <Link to="/mist-valley-cottage" className="inline-flex items-center gap-4 px-8 py-4 border border-[#2c312a]/30 text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-medium text-[#2c312a] hover:bg-[#2c312a] hover:text-[#E9E8E1] transition-all duration-500 w-fit group cursor-pointer">
+            <Link to="/mist-valley-cottage" className="inline-flex items-center gap-4 px-8 py-4 border border-[#2c312a]/30 text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-medium text-[#2c312a] hover:bg-[#2c312a] hover:text-[#F3EEE7] transition-all duration-500 w-fit group cursor-pointer">
               Explore The Dwellings
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>

@@ -4,14 +4,14 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#0f241b] text-[#E4E0D9] pt-10 pb-6 md:pt-12 md:pb-6 px-6 md:px-16 lg:px-[120px] font-sans selection:bg-[#9C8A71] selection:text-[#0f241b]">
+    <footer className="w-full bg-white text-[#2c312a] pt-10 pb-6 md:pt-12 md:pb-6 px-6 md:px-16 lg:px-[120px] font-sans selection:bg-[#8B7C6E] selection:text-white">
       
       {/* Top Row */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-10">
         {/* Left: Logo & Tagline */}
         <div className="mb-8 md:mb-0">
           <Link to="/" className="flex flex-col group mb-4 w-fit">
-            <svg className="w-[28px] h-[28px] md:w-[32px] md:h-[32px] mb-2 text-[#9C8A71] group-hover:opacity-80 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="w-[28px] h-[28px] md:w-[32px] md:h-[32px] mb-2 text-[#8B7C6E] group-hover:opacity-80 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 22V2" />
               <path d="M12 11C9.5 8 12 2 12 2C12 2 14.5 8 12 11Z" />
               <path d="M12 12L6 6" />
@@ -28,31 +28,31 @@ export default function Footer() {
               <span className="font-sans text-[8px] tracking-[0.45em] opacity-60 font-semibold uppercase">Ecostay</span>
             </div>
           </Link>
-          <p className="font-serif italic text-lg md:text-xl font-light text-[#9C8A71]">
+          <p className="font-serif italic text-lg md:text-xl font-light text-[#8B7C6E]">
             Luxury In Its Natural Form
           </p>
         </div>
 
         {/* Right: Book Your Escape */}
         <div className="md:pb-1">
-          <Link to="/book" className="group flex items-center gap-4 text-[10px] tracking-[0.2em] uppercase font-medium text-[#E4E0D9] transition-all">
-            <span className="pb-1 border-b border-[#9C8A71]/30 group-hover:border-[#9C8A71] transition-colors duration-500">Book Your Escape</span>
-            <ArrowRight size={14} strokeWidth={1} className="text-[#9C8A71] group-hover:translate-x-2 transition-transform duration-500" />
+          <Link to="/book" className="group flex items-center gap-4 text-[10px] tracking-[0.2em] uppercase font-medium text-[#2c312a] transition-all">
+            <span className="pb-1 border-b border-[#8B7C6E]/30 group-hover:border-[#8B7C6E] transition-colors duration-500">Book Your Escape</span>
+            <ArrowRight size={14} strokeWidth={1} className="text-[#8B7C6E] group-hover:translate-x-2 transition-transform duration-500" />
           </Link>
         </div>
       </div>
 
       {/* Middle Row: Navigation */}
-      <div className="w-full border-t border-b border-[#E4E0D9]/10 py-6 md:py-6 mb-8 md:mb-10">
+      <div className="w-full border-t border-b border-[#2c312a]/10 py-6 md:py-6 mb-8 md:mb-10">
         <ul className="flex flex-wrap justify-start md:justify-center gap-x-8 gap-y-6 md:gap-x-16">
           {['Stay', 'Dining', 'Experiences', 'Our Story', 'Gallery'].map((item) => (
             <li key={item}>
               <Link 
                 to={`/${item.toLowerCase().replace(' ', '-')}`}
-                className="text-[10px] md:text-[11px] tracking-[0.25em] uppercase font-medium text-[#E4E0D9]/60 hover:text-white transition-colors duration-300 relative group py-2 inline-block"
+                className="text-[10px] md:text-[11px] tracking-[0.25em] uppercase font-medium text-[#5a5a52] hover:text-[#2c312a] transition-colors duration-300 relative group py-2 inline-block"
               >
                 {item}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-[#9C8A71] group-hover:w-full transition-all duration-500 ease-out"></span>
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-[#8B7C6E] group-hover:w-full transition-all duration-500 ease-out"></span>
               </Link>
             </li>
           ))}
@@ -65,26 +65,26 @@ export default function Footer() {
         {/* Left: Contact Info */}
         <div className="flex flex-col sm:flex-row gap-8 sm:gap-16">
           <div className="flex flex-col gap-3">
-            <span className="text-[9px] tracking-[0.2em] uppercase text-[#9C8A71] font-medium">Inquiries</span>
-            <a href="mailto:reservations@greensoul.com" className="text-[12px] md:text-[13px] font-light tracking-wider text-[#E4E0D9]/80 hover:text-white transition-colors group w-fit">
+            <span className="text-[9px] tracking-[0.2em] uppercase text-[#8B7C6E] font-medium">Inquiries</span>
+            <a href="mailto:reservations@greensoul.com" className="text-[12px] md:text-[13px] font-light tracking-wider text-[#5a5a52] hover:text-[#2c312a] transition-colors group w-fit">
               <span className="relative">
                 reservations@greensoul.com
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-500 ease-out"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#2c312a] group-hover:w-full transition-all duration-500 ease-out"></span>
               </span>
             </a>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="text-[9px] tracking-[0.2em] uppercase text-[#9C8A71] font-medium">Direct Line</span>
-            <a href="tel:+919876543210" className="text-[12px] md:text-[13px] font-light tracking-wider text-[#E4E0D9]/80 hover:text-white transition-colors group w-fit">
+            <span className="text-[9px] tracking-[0.2em] uppercase text-[#8B7C6E] font-medium">Direct Line</span>
+            <a href="tel:+919876543210" className="text-[12px] md:text-[13px] font-light tracking-wider text-[#5a5a52] hover:text-[#2c312a] transition-colors group w-fit">
               <span className="relative">
                 +91 98765 43210
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-500 ease-out"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#2c312a] group-hover:w-full transition-all duration-500 ease-out"></span>
               </span>
             </a>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="text-[9px] tracking-[0.2em] uppercase text-[#9C8A71] font-medium">Location</span>
-            <span className="text-[12px] md:text-[13px] font-light tracking-wider text-[#E4E0D9]/80">
+            <span className="text-[9px] tracking-[0.2em] uppercase text-[#8B7C6E] font-medium">Location</span>
+            <span className="text-[12px] md:text-[13px] font-light tracking-wider text-[#5a5a52]">
               Mist Valley Estate, Chikmagalur
             </span>
           </div>
@@ -92,14 +92,14 @@ export default function Footer() {
 
         {/* Center: Socials */}
         <div className="flex gap-8 lg:ml-8">
-          <a href="#" className="text-[10px] tracking-[0.2em] uppercase font-medium text-[#E4E0D9]/60 hover:text-white transition-colors">Instagram</a>
-          <a href="#" className="text-[10px] tracking-[0.2em] uppercase font-medium text-[#E4E0D9]/60 hover:text-white transition-colors">Facebook</a>
+          <a href="#" className="text-[10px] tracking-[0.2em] uppercase font-medium text-[#5a5a52] hover:text-[#2c312a] transition-colors">Instagram</a>
+          <a href="#" className="text-[10px] tracking-[0.2em] uppercase font-medium text-[#5a5a52] hover:text-[#2c312a] transition-colors">Facebook</a>
         </div>
 
         {/* Right: Legal */}
-        <div className="flex flex-col items-start lg:items-end gap-3 text-[9px] tracking-[0.15em] uppercase text-[#E4E0D9]/40 font-medium lg:pb-1">
+        <div className="flex flex-col items-start lg:items-end gap-3 text-[9px] tracking-[0.15em] uppercase text-[#5a5a52] font-medium lg:pb-1">
           <span>&copy; {new Date().getFullYear()} Greensoul</span>
-          <Link to="/" className="hover:text-[#E4E0D9]/80 transition-colors">Privacy Policy</Link>
+          <Link to="/" className="hover:text-[#2c312a] transition-colors">Privacy Policy</Link>
         </div>
 
       </div>

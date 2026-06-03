@@ -15,10 +15,10 @@ export default function Dining() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
   return (
-    <div ref={containerRef} className="w-full bg-[#0B120C] min-h-screen text-[#E4E0D9] font-sans selection:bg-[#9C8A71] selection:text-[#0B120C]">
+    <div ref={containerRef} className="w-full bg-[#F3EEE7] min-h-screen text-[#2c312a] font-sans selection:bg-[#8B7C6E] selection:text-[#F3EEE7]">
       
       {/* SECTION 1: Luxury Dining Hero */}
-      <section className="relative w-full h-[100vh] overflow-hidden">
+      <section className="relative w-full h-[100vh] overflow-hidden bg-[#F3EEE7]">
         <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-full z-0">
           <LazyImage 
             initial={{ scale: 1.15 }}
@@ -53,7 +53,7 @@ export default function Dining() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
-            className="flex flex-col items-center text-white/70 animate-bounce-slow cursor-pointer"
+            className="flex flex-col items-center text-[#F3E9DC]/70 animate-bounce-slow cursor-pointer"
           >
             <span className="text-[9px] tracking-[0.3em] uppercase font-medium mb-3">Scroll</span>
             <ChevronDown size={18} strokeWidth={1.5} />
@@ -62,7 +62,7 @@ export default function Dining() {
       </section>
 
       {/* SECTION 2: Dining Philosophy */}
-      <section className="py-32 md:py-48 px-6 md:px-16 lg:px-[120px] max-w-[1600px] mx-auto relative bg-[#0B120C] z-10">
+      <section className="py-32 md:py-48 px-6 md:px-16 lg:px-[120px] max-w-[1600px] mx-auto relative bg-[#F3EEE7] z-10 border-t border-[#2c312a]/5">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -71,14 +71,14 @@ export default function Dining() {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5"
           >
-            <p className="text-[10px] tracking-[0.3em] uppercase font-medium mb-8 text-[#9C8A71] flex items-center gap-4">
-              <span className="w-8 h-[1px] bg-[#9C8A71]"></span>
+            <p className="text-[10px] tracking-[0.3em] uppercase font-medium mb-8 text-[#8B7C6E] flex items-center gap-4">
+              <span className="w-8 h-[1px] bg-[#8B7C6E]"></span>
               The Philosophy
             </p>
-            <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl mb-12 leading-[1.05] tracking-tight text-[#F3E9DC]">
-              Rooted in the <br/><span className="font-serif italic font-light text-[#9C8A71]">landscape.</span>
+            <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl mb-12 leading-[1.05] tracking-tight text-[#2c312a]">
+              Rooted in the <br/><span className="font-serif italic font-light text-[#8B7C6E]">landscape.</span>
             </h2>
-            <div className="text-[15px] leading-[2] text-[#A3A19B] font-light space-y-8 max-w-lg">
+            <div className="text-[15px] leading-[2] text-[#5a5a52] font-light space-y-8 max-w-lg">
               <p>
                 Our culinary philosophy is simple: we follow the rhythm of the seasons. Every dish tells the story of the Malnad region, honoring ancient foraging traditions and local farming practices.
               </p>
@@ -109,7 +109,7 @@ export default function Dining() {
       </section>
 
       {/* SECTION 3: Farm To Table Journey */}
-      <section className="py-24 md:py-32 px-6 md:px-16 lg:px-[120px] max-w-[1600px] mx-auto bg-[#101912]">
+      <section className="py-24 md:py-32 px-6 md:px-16 lg:px-[120px] max-w-[1600px] mx-auto bg-[#F3EEE7] border-t border-[#2c312a]/5">
         <div className="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24">
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
@@ -118,14 +118,14 @@ export default function Dining() {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="w-full lg:w-1/2"
           >
-            <p className="text-[10px] tracking-[0.3em] uppercase font-medium mb-8 text-[#9C8A71] flex items-center gap-4">
-              <span className="w-8 h-[1px] bg-[#9C8A71]"></span>
+            <p className="text-[10px] tracking-[0.3em] uppercase font-medium mb-8 text-[#8B7C6E] flex items-center gap-4">
+              <span className="w-8 h-[1px] bg-[#8B7C6E]"></span>
               Source to Plate
             </p>
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-10 leading-[1.1] tracking-tight text-[#F3E9DC]">
-              Harvested with <i className="font-serif italic font-light text-[#9C8A71]">intention.</i>
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-10 leading-[1.1] tracking-tight text-[#2c312a]">
+              Harvested with <i className="font-serif italic font-light text-[#8B7C6E]">intention.</i>
             </h2>
-            <p className="text-[15px] leading-[2] text-[#A3A19B] font-light mb-12">
+            <p className="text-[15px] leading-[2] text-[#5a5a52] font-light mb-12">
               Before a dish reaches your table, it begins its journey in the rich, volcanic soil of our estate. We collaborate with local farmers and our own organic gardens to source ingredients at their peak. It is a slow, meticulous process that ensures every bite captures the essence of the Western Ghats.
             </p>
           </motion.div>
@@ -151,15 +151,15 @@ export default function Dining() {
       </section>
 
       {/* SECTION 4: Signature Culinary Experiences */}
-      <section className="py-32 md:py-48 px-6 md:px-16 lg:px-[120px] max-w-[1600px] mx-auto bg-[#0B120C]">
+      <section className="py-32 md:py-48 px-6 md:px-16 lg:px-[120px] max-w-[1600px] mx-auto bg-[#F3EEE7] border-t border-[#2c312a]/5">
         <div className="text-center mb-24 md:mb-32 flex flex-col items-center">
-          <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#9C8A71] mb-6 flex items-center justify-center gap-4">
-            <span className="w-8 h-[1px] bg-[#9C8A71]"></span>
+          <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#8B7C6E] mb-6 flex items-center justify-center gap-4">
+            <span className="w-8 h-[1px] bg-[#8B7C6E]"></span>
             The Menu
-            <span className="w-8 h-[1px] bg-[#9C8A71]"></span>
+            <span className="w-8 h-[1px] bg-[#8B7C6E]"></span>
           </p>
-          <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-[#F3E9DC]">
-            Signature <span className="font-serif italic font-light text-[#9C8A71]">Experiences</span>
+          <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-[#2c312a]">
+            Signature <span className="font-serif italic font-light text-[#8B7C6E]">Experiences</span>
           </h2>
         </div>
         
@@ -181,10 +181,10 @@ export default function Dining() {
               />
               <div className="absolute inset-0 bg-[#0B120C]/10 group-hover:bg-transparent transition-colors duration-700"></div>
             </div>
-            <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-6 text-[#F3E9DC] group-hover:text-[#9C8A71] transition-colors duration-500 tracking-tight">
-              Earth & <i className="font-serif italic font-light text-[#9C8A71] group-hover:text-[#F3E9DC] transition-colors duration-500">Fire</i>
+            <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-6 text-[#2c312a] group-hover:text-[#8B7C6E] transition-colors duration-500 tracking-tight">
+              Earth & <i className="font-serif italic font-light text-[#8B7C6E] group-hover:text-[#2c312a] transition-colors duration-500">Fire</i>
             </h3>
-            <p className="text-[15px] leading-[2] text-[#A3A19B] font-light max-w-sm">
+            <p className="text-[15px] leading-[2] text-[#5a5a52] font-light max-w-sm">
               Our signature tasting menu. A sensory journey of taste and ambiance, curated specifically for you, blending modern culinary techniques with ancient open-fire cooking.
             </p>
           </motion.div>
@@ -206,10 +206,10 @@ export default function Dining() {
               />
               <div className="absolute inset-0 bg-[#0B120C]/10 group-hover:bg-transparent transition-colors duration-700"></div>
             </div>
-            <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-6 text-[#F3E9DC] group-hover:text-[#9C8A71] transition-colors duration-500 tracking-tight">
-              Forest <i className="font-serif italic font-light text-[#9C8A71] group-hover:text-[#F3E9DC] transition-colors duration-500">Foraging</i>
+            <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-6 text-[#2c312a] group-hover:text-[#8B7C6E] transition-colors duration-500 tracking-tight">
+              Forest <i className="font-serif italic font-light text-[#8B7C6E] group-hover:text-[#2c312a] transition-colors duration-500">Foraging</i>
             </h3>
-            <p className="text-[15px] leading-[2] text-[#A3A19B] font-light max-w-sm">
+            <p className="text-[15px] leading-[2] text-[#5a5a52] font-light max-w-sm">
               A deeply immersive dining experience highlighting rare, endemic ingredients sourced from the canopy edge. An exploration of the wild's delicate flavors.
             </p>
           </motion.div>
@@ -217,7 +217,7 @@ export default function Dining() {
       </section>
 
       {/* SECTION 5: Atmosphere & Ambience */}
-      <section className="relative w-full h-[100vh] min-h-[800px] overflow-hidden">
+      <section className="relative w-full h-[100vh] min-h-[800px] overflow-hidden bg-[#F3EEE7]">
         <motion.div 
           initial={{ scale: 1.1 }}
           whileInView={{ scale: 1 }}
@@ -259,7 +259,7 @@ export default function Dining() {
       </section>
 
       {/* SECTION 6: Chef Crafted Moments */}
-      <section className="py-32 md:py-48 px-6 md:px-16 lg:px-[120px] max-w-[1600px] mx-auto bg-[#0B120C]">
+      <section className="py-32 md:py-48 px-6 md:px-16 lg:px-[120px] max-w-[1600px] mx-auto bg-[#F3EEE7] border-t border-[#2c312a]/5">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-0 items-center">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -286,23 +286,23 @@ export default function Dining() {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 order-1 lg:order-2"
           >
-            <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#9C8A71] mb-8 flex items-center gap-4">
-              <span className="w-8 h-[1px] bg-[#9C8A71]"></span>
+            <p className="text-[10px] tracking-[0.3em] uppercase font-medium text-[#8B7C6E] mb-8 flex items-center gap-4">
+              <span className="w-8 h-[1px] bg-[#8B7C6E]"></span>
               The Craft
             </p>
-            <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl mb-10 leading-[1] tracking-tight text-[#F3E9DC]">
-              Mastery in <br/><span className="font-serif italic font-light text-[#9C8A71]">motion.</span>
+            <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl mb-10 leading-[1] tracking-tight text-[#2c312a]">
+              Mastery in <br/><span className="font-serif italic font-light text-[#8B7C6E]">motion.</span>
             </h2>
-            <p className="text-[15px] leading-[2] font-light text-[#A3A19B] mb-12">
+            <p className="text-[15px] leading-[2] font-light text-[#5a5a52] mb-12">
               Every dish is an expression of our chefs' devotion to the culinary arts. It is a slow, methodical process where technique elevates the raw, untouched beauty of nature's finest ingredients.
             </p>
-            <div className="w-16 h-[1px] bg-[#D4C3A3]/20"></div>
+            <div className="w-16 h-[1px] bg-[#8B7C6E]/20"></div>
           </motion.div>
         </div>
       </section>
 
       {/* SECTION 7: Closing Experience */}
-      <section className="relative w-full h-[80vh] min-h-[600px] overflow-hidden">
+      <section className="relative w-full h-[80vh] min-h-[600px] overflow-hidden bg-[#F3EEE7]">
         <motion.div 
           initial={{ scale: 1.1 }}
           whileInView={{ scale: 1 }}

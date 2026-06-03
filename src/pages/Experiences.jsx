@@ -20,7 +20,7 @@ export default function Experiences() {
   }, []);
 
   return (
-    <div id="experiences" className="w-full bg-[#E9E8E1] min-h-screen text-[#2c312a] font-sans selection:bg-[#2c312a] selection:text-[#E9E8E1] overflow-x-hidden">
+    <div id="experiences" className="w-full bg-[#F3EEE7] min-h-screen text-[#2c312a] font-sans selection:bg-[#8B7C6E] selection:text-[#F3EEE7] overflow-x-hidden">
       
       {/* Hero Section */}
       <section className="relative min-h-[100vh] w-full flex items-center overflow-hidden pt-24 pb-16">
@@ -39,13 +39,13 @@ export default function Experiences() {
         {/* Mobile Gradient Overlay (Extended for text readability) */}
         <div 
           className="absolute inset-0 z-[5] w-full pointer-events-none md:hidden"
-          style={{ background: 'linear-gradient(to right, #E9E8E1 0%, #E9E8E1 45%, rgba(233, 232, 225, 0.85) 75%, rgba(233, 232, 225, 0) 100%)' }}
+          style={{ background: 'linear-gradient(to right, #F3EEE7 0%, #F3EEE7 45%, rgba(243, 238, 231, 0.85) 75%, rgba(243, 238, 231, 0) 100%)' }}
         ></div>
         
         {/* Desktop Gradient Overlay (Exactly as requested) */}
         <div 
           className="absolute inset-0 z-[5] w-full pointer-events-none hidden md:block"
-          style={{ background: 'linear-gradient(to right, #E9E8E1 0%, #E9E8E1 30%, rgba(233, 232, 225, 0) 45%)' }}
+          style={{ background: 'linear-gradient(to right, #F3EEE7 0%, #F3EEE7 30%, rgba(243, 238, 231, 0) 45%)' }}
         ></div>
 
         {/* Content */}
@@ -82,7 +82,7 @@ export default function Experiences() {
       </section>
 
       {/* Grid Section */}
-      <section className="w-full px-8 md:px-16 lg:px-[120px] py-16 md:py-24 lg:py-32 bg-[#E9E8E1] max-w-[1800px] mx-auto">
+      <section className="w-full px-8 md:px-16 lg:px-[120px] py-16 md:py-24 lg:py-32 bg-[#F3EEE7] max-w-[1800px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10 items-center">
           
           {/* Image 1 */}
@@ -165,15 +165,15 @@ export default function Experiences() {
       </section>
 
       {/* Experiences and Landscape Section */}
-      <section id="explore-section" className="w-full py-24 md:py-32 px-8 md:px-16 lg:px-[120px] bg-[#141413] text-[#E4E0D9]">
+      <section id="explore-section" className="w-full py-24 md:py-32 px-8 md:px-16 lg:px-[120px] bg-[#F3EEE7] text-[#2c312a]">
         <div className="max-w-[1800px] mx-auto">
           
           <div className="flex flex-col items-center text-center mb-20 md:mb-32">
-            <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-6">
-              Experiences & <span className="font-serif italic text-[#9C8A71] font-light">Landscape</span>
+            <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-6 text-[#2c312a]">
+              Experiences & <span className="font-serif italic text-[#8B7C6E] font-light">Landscape</span>
             </h2>
-            <div className="w-12 h-[1px] bg-[#9C8A71]/50 mb-8"></div>
-            <p className="font-body text-[15px] leading-[2] font-light text-[#A3A19B] max-w-2xl">
+            <div className="w-12 h-[1px] bg-[#8B7C6E]/50 mb-8"></div>
+            <p className="font-body text-[15px] leading-[2] font-light text-[#5a5a52] max-w-2xl">
               Immerse yourself in the raw beauty of the Western Ghats. From pristine check dams to lush plantation trails, every corner offers a new perspective.
             </p>
           </div>
@@ -198,7 +198,7 @@ export default function Experiences() {
                   decoding="async"
                 />
               </div>
-              <h3 className="font-heading text-3xl md:text-4xl text-[#E4E0D9] group-hover:text-[#9C8A71] transition-colors tracking-tight">
+              <h3 className="font-heading text-3xl md:text-4xl text-[#2c312a] group-hover:text-[#8B7C6E] transition-colors tracking-tight">
                 Trek to Check Dam
               </h3>
             </motion.div>
@@ -220,7 +220,7 @@ export default function Experiences() {
                   decoding="async"
                 />
               </div>
-              <h3 className="font-heading text-3xl md:text-4xl text-[#E4E0D9] group-hover:text-[#9C8A71] transition-colors tracking-tight">
+              <h3 className="font-heading text-3xl md:text-4xl text-[#2c312a] group-hover:text-[#8B7C6E] transition-colors tracking-tight">
                 Plantation Trails
               </h3>
             </motion.div>
@@ -242,7 +242,7 @@ export default function Experiences() {
                   decoding="async"
                 />
               </div>
-              <h3 className="font-heading text-3xl md:text-4xl text-[#E4E0D9] group-hover:text-[#9C8A71] transition-colors tracking-tight">
+              <h3 className="font-heading text-3xl md:text-4xl text-[#2c312a] group-hover:text-[#8B7C6E] transition-colors tracking-tight">
                 The Forest Pool
               </h3>
             </motion.div>

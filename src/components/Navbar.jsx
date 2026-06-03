@@ -43,7 +43,7 @@ export default function Navbar() {
   // Text color logic for navbar
   let textColorClass = "text-[#2c312a]";
   if (isSolidNav) {
-    textColorClass = "!text-[#F3E9DC]";
+    textColorClass = "!text-[#2c312a]";
   } else if (isDarkNav && !scrolled) {
     textColorClass = "text-[#E5E1D6]";
   }
@@ -58,7 +58,7 @@ export default function Navbar() {
           'fixed top-0 w-full z-50 transition-all duration-700 ease-in-out px-4 md:px-12 flex justify-between items-center',
           textColorClass,
           (scrolled || isSolidNav)
-            ? 'bg-[#0B120C] py-4 shadow-sm !text-[#F3E9DC]' 
+            ? 'bg-[#F3EEE7] py-4 shadow-sm !text-[#2c312a]' 
             : (isDarkNav || location.pathname === '/' 
                 ? 'bg-gradient-to-b from-black/50 via-black/10 to-transparent py-8 shadow-none' 
                 : 'bg-transparent py-8')
@@ -109,7 +109,12 @@ export default function Navbar() {
         <div className="flex items-center space-x-6 md:space-x-8">
           <Link 
             to="/book"
-            className="hidden md:flex items-center justify-center px-6 py-2.5 border border-current text-[10px] tracking-[0.2em] uppercase font-medium hover:bg-white hover:text-[#0B120C] transition-all duration-300 drop-shadow-sm"
+            className={cn(
+              "hidden md:flex items-center justify-center px-6 py-2.5 border border-current text-[10px] tracking-[0.2em] uppercase font-medium transition-all duration-300 drop-shadow-sm",
+              (scrolled || isSolidNav) 
+                ? "hover:bg-[#2c312a] hover:text-[#F3EEE7]" 
+                : "hover:bg-white hover:text-[#0B120C]"
+            )}
           >
             Book Your Escape
           </Link>
